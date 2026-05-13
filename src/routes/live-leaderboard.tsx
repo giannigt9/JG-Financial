@@ -13,16 +13,7 @@ function LiveLeaderboard() {
 
   return (
     <>
-      <PageBanner
-        eyebrow="Live Leaderboard"
-        title={
-          <>
-            Track the producers
-            <br />
-            <em className="gradient-text">leading the agency.</em>
-          </>
-        }
-      />
+      <PageBanner eyebrow="Live Leaderboard" title="Weekly Leaderboard" />
       <LiveLeaderboardClient initial={initial} />
     </>
   )
