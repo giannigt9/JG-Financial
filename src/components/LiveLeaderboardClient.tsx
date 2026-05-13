@@ -134,7 +134,7 @@ function LeaderboardRow({ entry }: { entry: LeaderboardEntry }) {
 function RankBadge({ rank }: { rank: number }) {
   if (rank > 3) {
     return (
-      <p className="justify-self-center text-base font-extrabold text-[#39b54a] sm:text-xl">
+      <p className="justify-self-center text-base font-extrabold text-white sm:text-xl">
         {rank}
       </p>
     )
