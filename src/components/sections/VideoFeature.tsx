@@ -1,4 +1,4 @@
-import { Play } from 'lucide-react'
+import { Icon } from '#/components/Icon'
 
 export function VideoFeature() {
   return (
@@ -7,7 +7,7 @@ export function VideoFeature() {
         <div className="grid h-full place-items-center p-8 text-center">
           <div>
             <div className="mx-auto grid size-24 place-items-center rounded-full border border-blue-line bg-blue-bright/10 text-blue-glow">
-              <Play fill="currentColor" size={34} />
+              <Icon fill="currentColor" name="play" size={34} />
             </div>
             <p className="mt-6 font-display text-3xl italic text-white">
               Industry Breakdown

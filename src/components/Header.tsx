@@ -1,6 +1,6 @@
 import { Link, useRouterState } from '@tanstack/react-router'
-import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { Icon } from '#/components/Icon'
 import { contact } from '#/content/contact'
 import { navItems } from '#/content/navigation'
 
@@ -50,7 +50,7 @@ export function Header() {
           onClick={() => setOpen((value) => !value)}
           type="button"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          <Icon name={open ? 'x' : 'menu'} size={22} />
         </button>
       </div>
       {open ? (

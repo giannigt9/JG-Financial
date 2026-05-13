@@ -1,9 +1,6 @@
 import { useState } from 'react'
-import { Lock, ShieldCheck } from 'lucide-react'
-import {
-  getPortalData,
-  loginPortal,
-} from '#/server/portal'
+import { Icon } from '#/components/Icon'
+import { loginPortal } from '#/server/portal'
 import type { PortalAccessState } from '#/server/portal'
 import type { PortalTab } from '#/content/portal'
 
@@ -15,14 +12,21 @@ export function PortalClient({ initial }: { initial: PortalAccessState }) {
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setPending(true)
-    const result = await loginPortal({ data: { password } })
-    if (result.authenticated) {
-      setState(await getPortalData())
-      setPassword('')
-    } else {
+    try {
+      const result = await loginPortal({ data: { password } })
       setState(result)
+      if (result.authenticated) {
+        setPassword('')
+      }
+    } catch {
+      setState({
+        authenticated: false,
+        error: 'Portal access failed. Try again or contact your manager.',
+        tabs: [],
+      })
+    } finally {
+      setPending(false)
     }
-    setPending(false)
   }
 
   if (!state.authenticated) {
@@ -58,7 +62,7 @@ function PortalLogin({
       <div className="content-shell">
         <div className="mx-auto max-w-xl border border-blue-line bg-gradient-to-br from-navy-2 to-navy p-8 text-center md:p-14">
           <div className="mx-auto grid size-18 place-items-center border border-blue-line bg-blue-bright/10 text-blue-glow">
-            <Lock size={32} />
+            <Icon name="lock" size={32} />
           </div>
           <h2 className="mt-7 font-display text-4xl text-white">
             Enter <em className="text-blue-glow">Agent Password</em>
@@ -68,15 +72,20 @@ function PortalLogin({
             your manager.
           </p>
           <form className="mt-8 flex gap-3" onSubmit={onSubmit}>
+            <label className="sr-only" htmlFor="portal-password">
+              Agent portal password
+            </label>
             <input
               autoComplete="current-password"
               className="min-w-0 flex-1 border border-blue-line bg-white/5 px-4 py-4 text-white outline-none transition focus:border-blue-bright"
+              id="portal-password"
               onChange={(event) => onPasswordChange(event.target.value)}
               placeholder="Enter password"
               type="password"
               value={password}
             />
             <button
+              aria-busy={pending}
               className="bg-blue-bright px-6 text-xs font-bold uppercase tracking-[.18em] text-white transition hover:bg-blue-glow hover:text-navy disabled:opacity-60"
               disabled={pending}
               type="submit"
@@ -96,7 +105,7 @@ function PortalContent({ tabs }: { tabs: Array<PortalTab> }) {
     <section className="section-pad bg-navy">
       <div className="content-shell">
         <div className="mb-10 flex items-center gap-3 text-blue-glow">
-          <ShieldCheck size={22} />
+          <Icon name="shield-check" size={22} />
           <p className="text-xs font-bold uppercase tracking-[.22em]">
             Portal Unlocked
           </p>

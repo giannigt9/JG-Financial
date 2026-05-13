@@ -1,4 +1,4 @@
-import { Target } from 'lucide-react'
+import { Icon } from '#/components/Icon'
 import { SectionHeading } from '#/components/SectionHeading'
 import type { CompensationFormula, MathRow } from '#/content/types'
 
@@ -21,7 +21,7 @@ export function MathSection({
         <div className="mt-16 grid border border-blue-line bg-blue-line md:grid-cols-2">
           {rows.map((row) => (
             <article className="flex items-center gap-5 bg-navy p-7" key={row.label}>
-              <Target className="shrink-0 text-blue-glow" size={24} />
+              <Icon className="shrink-0 text-blue-glow" name="target" size={24} />
               <p className="text-[15px] leading-7 text-white/90">
                 <strong className="font-display text-xl italic text-blue-glow">
                   {row.value}

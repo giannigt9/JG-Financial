@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
-import { ExternalLink } from 'lucide-react'
 import { clsx } from 'clsx'
+import { Icon } from '#/components/Icon'
 import type { AppRoute } from '#/config/routes'
 
 type ButtonVariant = 'primary' | 'outline' | 'text'
@@ -50,7 +50,7 @@ export function ButtonLink(props: ButtonLinkProps) {
         target={opensNewTab ? '_blank' : undefined}
       >
         {children}
-        {opensNewTab ? <ExternalLink aria-hidden="true" size={15} /> : null}
+        {opensNewTab ? <Icon name="external-link" size={15} /> : null}
       </a>
     )
   }

@@ -1,28 +1,19 @@
-import {
-  ArrowRight,
-  BarChart3,
-  CalendarDays,
-  Diamond,
-  Headphones,
-  PhoneCall,
-  ShieldCheck,
-  Sparkles,
-  Users,
-} from 'lucide-react'
 import { ButtonLink } from '#/components/ButtonLink'
+import { Icon } from '#/components/Icon'
+import type { IconName } from '#/components/Icon'
 import { SectionHeading } from '#/components/SectionHeading'
 import type { FeatureIcon, FeatureItem } from '#/content/types'
 
 const featureIcons = {
-  analytics: BarChart3,
-  calendar: CalendarDays,
-  carrierAccess: ShieldCheck,
-  dialer: PhoneCall,
-  growth: Sparkles,
-  mentorship: Users,
-  products: Diamond,
-  support: Headphones,
-} satisfies Record<FeatureIcon, React.ComponentType<{ size?: number; strokeWidth?: number }>>
+  analytics: 'analytics',
+  calendar: 'calendar',
+  carrierAccess: 'shield-check',
+  dialer: 'phone',
+  growth: 'sparkles',
+  mentorship: 'users',
+  products: 'diamond',
+  support: 'headphones',
+} satisfies Record<FeatureIcon, IconName>
 
 export function FeatureShowcase({ items }: { items: Array<FeatureItem> }) {
   return (
@@ -36,8 +27,6 @@ export function FeatureShowcase({ items }: { items: Array<FeatureItem> }) {
         />
         <div className="mt-20 space-y-24">
           {items.map((feature, index) => {
-            const Icon = featureIcons[feature.icon]
-
             return (
               <article
                 className="grid items-center gap-12 lg:grid-cols-2"
@@ -56,11 +45,15 @@ export function FeatureShowcase({ items }: { items: Array<FeatureItem> }) {
                   </p>
                   <ButtonLink className="mt-8" {...feature.cta} variant="text">
                     {feature.cta.label}
-                    <ArrowRight size={16} />
+                    <Icon name="arrow-right" size={16} />
                   </ButtonLink>
                 </div>
                 <div className="feature-panel">
-                  <Icon size={104} strokeWidth={1.2} />
+                  <Icon
+                    name={featureIcons[feature.icon]}
+                    size={104}
+                    strokeWidth={1.2}
+                  />
                 </div>
               </article>
             )
