@@ -3,8 +3,8 @@ import { Lock, ShieldCheck } from 'lucide-react'
 import {
   getPortalData,
   loginPortal,
-  type PortalAccessState,
 } from '#/server/portal'
+import type { PortalAccessState } from '#/server/portal'
 
 export function PortalClient({ initial }: { initial: PortalAccessState }) {
   const [state, setState] = useState(initial)

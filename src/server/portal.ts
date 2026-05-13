@@ -5,7 +5,8 @@ import {
   setCookie,
   setResponseHeader,
 } from '@tanstack/react-start/server'
-import { portalTabs, type PortalTab } from '#/content/portal'
+import { portalTabs } from '#/content/portal'
+import type { PortalTab } from '#/content/portal'
 
 const COOKIE_NAME = '__Host-jg_portal'
 const SESSION_TTL_SECONDS = 60 * 60 * 8

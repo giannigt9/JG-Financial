@@ -1,4 +1,5 @@
-import { Link, type LinkProps } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
+import type { LinkProps } from '@tanstack/react-router'
 import { ExternalLink } from 'lucide-react'
 import { clsx } from 'clsx'
 

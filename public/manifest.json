@@ -1,6 +1,6 @@
 {
-  "short_name": "TanStack App",
-  "name": "Create TanStack App Sample",
+  "short_name": "JG Financial",
+  "name": "JG Financial",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +8,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "jg-logo.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "902x200"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#061536",
+  "background_color": "#061536"
 }
