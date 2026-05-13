@@ -92,6 +92,20 @@ export const mathRows = [
   { value: '~5 hours/day', label: '= $10K/month' },
 ]
 
+export const compensationFormula = [
+  '$1,000 avg AP',
+  '75% Comp',
+  '75% Advance',
+  '75% Persistency',
+  '$422 per sale',
+]
+
+export const industryMetrics = [
+  { value: '$23T', label: 'U.S. Life Insurance Gap' },
+  { value: '10K+', label: 'Americans Turn 65 Daily' },
+  { value: '∞', label: 'Untapped Demand' },
+]
+
 export const schedule = [
   {
     day: 'Monday',
@@ -283,6 +297,15 @@ export const licenseSteps = [
     badge: 'You are in business',
     internalLink: { label: 'Agent Portal', to: '/portal' as InternalHref },
   },
+]
+
+export const onboardingCosts = [
+  { label: 'Pre-Licensing - Xcel Solutions', value: '$30 with code 2020' },
+  { label: 'State Licensing Exam', value: '$40-$100 / attempt' },
+  { label: 'Resident License Fee', value: 'Varies by state' },
+  { label: 'Carrier Contracting', value: 'Free' },
+  { label: 'E&O Insurance', value: '$127 down + $27/mo' },
+  { label: 'Estimated Out-of-Pocket Total', value: '~$230-$330' },
 ]
 
 export const benefits = [
