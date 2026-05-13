@@ -1,5 +1,7 @@
 import { Icon } from '#/components/Icon'
+import { ButtonLink } from '#/components/ButtonLink'
 import { SectionHeading } from '#/components/SectionHeading'
+import { appRoutes } from '#/config/routes'
 
 export function LeaderboardPreview() {
   return (
@@ -17,8 +19,15 @@ export function LeaderboardPreview() {
             Live data integration coming soon.
           </p>
           <p className="mt-3 text-sm uppercase tracking-[.18em] text-white/42">
-            Connecting to AgentSpace
+            Connected to AgentSpace
           </p>
+          <ButtonLink
+            className="mt-7"
+            to={appRoutes.liveLeaderboard}
+            variant="text"
+          >
+            Open Live Leaderboard
+          </ButtonLink>
         </div>
       </div>
     </section>

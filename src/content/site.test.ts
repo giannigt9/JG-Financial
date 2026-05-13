@@ -16,6 +16,7 @@ describe('site content contracts', () => {
       '/team',
       '/faq',
       '/careers',
+      '/live-leaderboard',
       '/portal',
     ])
   })

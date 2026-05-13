@@ -8,5 +8,6 @@ export const navItems = [
   { label: 'Team', to: appRoutes.team },
   { label: 'FAQ', to: appRoutes.faq },
   { label: 'Careers', to: appRoutes.careers },
+  { label: 'Live Leaderboard', to: appRoutes.liveLeaderboard },
   { label: 'Agent Portal', to: appRoutes.portal },
 ] satisfies Array<NavigationItem>

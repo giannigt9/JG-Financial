@@ -34,6 +34,10 @@ test('primary routes render and navigate', async ({ page }) => {
   await expect(
     page.getByText('JG Financial is a national life insurance agency.'),
   ).toBeVisible()
+
+  await clickHeaderLink(page, 'Live Leaderboard')
+  await expect(page).toHaveURL(/\/live-leaderboard$/)
+  await expect(page.getByText('Submission Date', { exact: true })).toBeVisible()
 })
 
 test('agent portal gates restricted data server-side', async ({ page }) => {

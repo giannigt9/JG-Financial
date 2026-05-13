@@ -14,7 +14,8 @@ bun install
 cp .env.example .env.local
 ```
 
-Set `AGENT_PORTAL_PASSWORD` and `SESSION_SECRET` in `.env.local`.
+Set `AGENT_PORTAL_PASSWORD`, `SESSION_SECRET`, and `AGENTSPACE_API_KEY` in
+`.env.local`.
 
 ## Scripts
 

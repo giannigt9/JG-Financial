@@ -5,6 +5,7 @@ export const appRoutes = {
   team: '/team',
   faq: '/faq',
   careers: '/careers',
+  liveLeaderboard: '/live-leaderboard',
   portal: '/portal',
 } as const
 
