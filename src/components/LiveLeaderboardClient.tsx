@@ -92,8 +92,8 @@ function SummaryPill({ label, value }: { label: string; value: string }) {
 function LeaderboardList({ entries }: { entries: Array<LeaderboardEntry> }) {
   if (!entries.length) {
     return (
-      <div className="rounded-[28px] border border-blue-line bg-[#f7f9ff] p-10 text-center">
-        <p className="font-display text-3xl text-[#081326]">
+      <div className="border border-blue-line bg-navy p-10 text-center">
+        <p className="font-display text-3xl text-white">
           No leaderboard rows for this week.
         </p>
       </div>
@@ -101,8 +101,8 @@ function LeaderboardList({ entries }: { entries: Array<LeaderboardEntry> }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-[28px] border border-[#d7deee] bg-[#f7f9ff] shadow-[0_24px_80px_rgba(2,10,28,0.28)]">
-      <div className="divide-y divide-[#dfe5f1]">
+    <div className="overflow-hidden border border-blue-line bg-navy">
+      <div className="divide-y divide-blue-line">
         {entries.map((entry) => (
           <LeaderboardRow entry={entry} key={`${entry.rank}-${entry.agent}`} />
         ))}
@@ -113,18 +113,18 @@ function LeaderboardList({ entries }: { entries: Array<LeaderboardEntry> }) {
 
 function LeaderboardRow({ entry }: { entry: LeaderboardEntry }) {
   return (
-    <article className="grid min-h-24 grid-cols-[2.75rem_3.5rem_minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 text-[#081326] sm:min-h-28 sm:grid-cols-[4.5rem_5.5rem_minmax(0,1fr)_max-content] sm:gap-4 sm:px-7 sm:py-5">
+    <article className="grid min-h-24 grid-cols-[2.75rem_3.5rem_minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 text-white sm:min-h-28 sm:grid-cols-[4.5rem_5.5rem_minmax(0,1fr)_max-content] sm:gap-4 sm:px-7 sm:py-5">
       <RankBadge rank={entry.rank} />
       <ProducerAvatar agent={entry.agent} rank={entry.rank} />
       <div className="min-w-0">
-        <h3 className="text-base font-extrabold leading-tight text-[#050b19] sm:text-2xl">
+        <h3 className="text-base font-extrabold leading-tight text-white sm:text-2xl">
           {entry.agent}
         </h3>
-        <p className="mt-1 text-[10px] font-bold uppercase tracking-[.13em] text-[#6b7280] sm:text-xs">
+        <p className="mt-1 text-[10px] font-bold uppercase tracking-[.13em] text-blue-pale/55 sm:text-xs">
           {entry.submitted} submitted
         </p>
       </div>
-      <p className="justify-self-end text-right text-base font-semibold text-[#5f6470] sm:text-2xl">
+      <p className="justify-self-end text-right text-base font-semibold text-white sm:text-2xl">
         {formatCurrency(entry.annualPremium)}
       </p>
     </article>
