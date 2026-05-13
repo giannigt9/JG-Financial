@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
+    "dev:e2e": "vite dev --host 127.0.0.1",
     "build": "bun run routes:generate && vite build",
     "start": "vite preview --host 0.0.0.0",
     "preview": "vite preview",

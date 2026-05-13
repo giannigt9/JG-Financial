@@ -1,5 +1,17 @@
 import type { LeaderboardState } from '#/server/leaderboard.shared'
 
+type LeaderboardEntry = LeaderboardState['entries'][number]
+
+const AVATAR_TONES = [
+  'bg-[#ff6a2a]',
+  'bg-[#80675d]',
+  'bg-[#1f6819]',
+  'bg-[#008d80]',
+  'bg-[#2f80ed]',
+  'bg-[#19bdb5]',
+  'bg-[#8a4f3d]',
+] as const
+
 export function LiveLeaderboardClient({
   initial,
 }: {
@@ -8,14 +20,13 @@ export function LiveLeaderboardClient({
   return (
     <section className="section-pad bg-navy">
       <div className="content-shell">
-        <LeaderboardSummary state={initial} />
-        <LeaderboardTable entries={initial.entries} />
+        <LeaderboardPanel state={initial} />
       </div>
     </section>
   )
 }
 
-function LeaderboardSummary({ state }: { state: LeaderboardState }) {
+function LeaderboardPanel({ state }: { state: LeaderboardState }) {
   const totalPremium = state.entries.reduce(
     (total, entry) => total + entry.annualPremium,
     0,
@@ -26,30 +37,26 @@ function LeaderboardSummary({ state }: { state: LeaderboardState }) {
   )
 
   return (
-    <div className="mb-6 border border-blue-line bg-gradient-to-br from-navy-2 to-navy p-6">
-      <div className="flex flex-wrap items-start justify-between gap-5">
+    <div>
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-5">
         <div>
           <p className="eyebrow">Live Results</p>
+          <h2 className="mt-3 font-display text-4xl text-white">
+            Live production
+          </h2>
         </div>
-        <p className="border border-blue-line px-3 py-2 text-[10px] font-bold uppercase tracking-[.16em] text-blue-glow">
-          {state.status === 'success' ? 'Connected' : 'Needs Attention'}
-        </p>
+        <LeaderboardMetrics
+          producerCount={state.entries.length}
+          status={state.status}
+          totalPremium={totalPremium}
+          totalSubmitted={totalSubmitted}
+        />
       </div>
 
       {state.status === 'success' ? (
-        <div className="mt-6 grid border border-blue-line bg-blue-line md:grid-cols-3">
-          <SummaryMetric
-            label="Producers"
-            value={String(state.entries.length)}
-          />
-          <SummaryMetric label="Submitted" value={String(totalSubmitted)} />
-          <SummaryMetric
-            label="Production"
-            value={formatCurrency(totalPremium)}
-          />
-        </div>
+        <LeaderboardList entries={state.entries} />
       ) : (
-        <p className="mt-5 border border-blue-line bg-blue-bright/10 p-4 text-sm leading-7 text-blue-pale">
+        <p className="border border-blue-line bg-blue-bright/10 p-4 text-sm leading-7 text-blue-pale">
           {state.error}
         </p>
       )}
@@ -57,26 +64,45 @@ function LeaderboardSummary({ state }: { state: LeaderboardState }) {
   )
 }
 
-function SummaryMetric({ label, value }: { label: string; value: string }) {
+function LeaderboardMetrics({
+  producerCount,
+  status,
+  totalPremium,
+  totalSubmitted,
+}: {
+  producerCount: number
+  status: LeaderboardState['status']
+  totalPremium: number
+  totalSubmitted: number
+}) {
   return (
-    <div className="bg-navy p-5">
-      <p className="font-display text-3xl text-blue-glow">{value}</p>
-      <p className="mt-1 text-[10px] font-bold uppercase tracking-[.16em] text-white/45">
+    <div className="grid grid-cols-2 gap-2 text-right sm:flex sm:items-stretch">
+      <SummaryPill label="Producers" value={String(producerCount)} />
+      <SummaryPill label="Submitted" value={String(totalSubmitted)} />
+      <SummaryPill label="Production" value={formatCurrency(totalPremium)} />
+      <p className="col-span-2 border border-blue-line px-3 py-2 text-[10px] font-bold uppercase tracking-[.16em] text-blue-glow sm:col-span-1">
+        {status === 'success' ? 'Connected' : 'Needs Attention'}
+      </p>
+    </div>
+  )
+}
+
+function SummaryPill({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border border-blue-line px-3 py-2">
+      <p className="text-sm font-extrabold text-white">{value}</p>
+      <p className="mt-1 text-[9px] font-bold uppercase tracking-[.16em] text-blue-pale/55">
         {label}
       </p>
     </div>
   )
 }
 
-function LeaderboardTable({
-  entries,
-}: {
-  entries: Array<LeaderboardState['entries'][number]>
-}) {
+function LeaderboardList({ entries }: { entries: Array<LeaderboardEntry> }) {
   if (!entries.length) {
     return (
-      <div className="border border-blue-line bg-navy-2 p-10 text-center">
-        <p className="mt-5 font-display text-3xl text-white">
+      <div className="rounded-[28px] border border-blue-line bg-[#f7f9ff] p-10 text-center">
+        <p className="font-display text-3xl text-[#081326]">
           No leaderboard rows for this week.
         </p>
       </div>
@@ -84,41 +110,76 @@ function LeaderboardTable({
   }
 
   return (
-    <div className="overflow-hidden border border-blue-line">
-      <div className="hidden grid-cols-[90px_1fr_170px_150px] bg-blue-900/40 px-5 py-4 text-[10px] font-bold uppercase tracking-[.16em] text-blue-glow md:grid">
-        <span>Rank</span>
-        <span>Producer</span>
-        <span className="text-right">Production</span>
-        <span className="text-right">Submitted</span>
-      </div>
-      <div className="divide-y divide-blue-line">
+    <div className="overflow-hidden rounded-[28px] border border-[#d7deee] bg-[#f7f9ff] shadow-[0_24px_80px_rgba(2,10,28,0.28)]">
+      <div className="divide-y divide-[#dfe5f1]">
         {entries.map((entry) => (
-          <article
-            className="grid gap-4 bg-navy p-5 md:grid-cols-[90px_1fr_170px_150px] md:items-center"
-            key={`${entry.rank}-${entry.agent}`}
-          >
-            <p className="font-display text-4xl italic text-blue-glow">
-              #{entry.rank}
-            </p>
-            <div>
-              <h3 className="font-display text-3xl text-white">
-                {entry.agent}
-              </h3>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[.16em] text-white/42 md:hidden">
-                Production · Submitted
-              </p>
-            </div>
-            <p className="font-display text-2xl text-white md:text-right">
-              {formatCurrency(entry.annualPremium)}
-            </p>
-            <p className="text-sm font-bold text-blue-pale md:text-right">
-              {entry.submitted}
-            </p>
-          </article>
+          <LeaderboardRow entry={entry} key={`${entry.rank}-${entry.agent}`} />
         ))}
       </div>
     </div>
   )
+}
+
+function LeaderboardRow({ entry }: { entry: LeaderboardEntry }) {
+  return (
+    <article className="grid min-h-24 grid-cols-[2.75rem_3.5rem_minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 text-[#081326] sm:min-h-28 sm:grid-cols-[4.5rem_5.5rem_minmax(0,1fr)_max-content] sm:gap-4 sm:px-7 sm:py-5">
+      <RankBadge rank={entry.rank} />
+      <ProducerAvatar agent={entry.agent} rank={entry.rank} />
+      <div className="min-w-0">
+        <h3 className="text-base font-extrabold leading-tight text-[#050b19] sm:text-2xl">
+          {entry.agent}
+        </h3>
+        <p className="mt-1 text-[10px] font-bold uppercase tracking-[.13em] text-[#6b7280] sm:text-xs">
+          {entry.submitted} submitted
+        </p>
+      </div>
+      <p className="justify-self-end text-right text-base font-semibold text-[#5f6470] sm:text-2xl">
+        {formatCurrency(entry.annualPremium)}
+      </p>
+    </article>
+  )
+}
+
+function RankBadge({ rank }: { rank: number }) {
+  if (rank > 3) {
+    return (
+      <p className="justify-self-center text-base font-extrabold text-[#39b54a] sm:text-xl">
+        {rank}
+      </p>
+    )
+  }
+
+  const medalClass =
+    rank === 1
+      ? 'border-[#f5c22c] bg-[#ffd33d] text-[#9b6700] shadow-[inset_0_0_0_5px_rgba(255,184,0,0.35)]'
+      : rank === 2
+        ? 'border-[#c5d3e8] bg-[#dce8f7] text-[#6f87a4] shadow-[inset_0_0_0_5px_rgba(156,181,210,0.35)]'
+        : 'border-[#c77735] bg-[#d98a45] text-[#8d4e20] shadow-[inset_0_0_0_5px_rgba(161,91,35,0.28)]'
+
+  return (
+    <p
+      className={`grid size-9 place-items-center justify-self-center rounded-full border-4 text-base font-extrabold sm:size-12 sm:text-xl ${medalClass}`}
+    >
+      {rank}
+    </p>
+  )
+}
+
+function ProducerAvatar({ agent, rank }: { agent: string; rank: number }) {
+  const tone = AVATAR_TONES[(rank - 1) % AVATAR_TONES.length]
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`grid size-12 place-items-center rounded-full text-xl font-bold text-white shadow-[inset_0_-10px_20px_rgba(0,0,0,0.14)] sm:size-16 sm:text-3xl ${tone}`}
+    >
+      {getInitial(agent)}
+    </div>
+  )
+}
+
+function getInitial(value: string) {
+  return value.trim().charAt(0).toUpperCase() || '?'
 }
 
 function formatCurrency(value: number) {
