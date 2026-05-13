@@ -33,9 +33,15 @@ export function defaultLeaderboardFilters(
   today = new Date(),
 ): LeaderboardFilters {
   return {
-    startDate: formatDate(new Date(today.getFullYear(), today.getMonth(), 1)),
+    startDate: formatDate(getWeekStart(today)),
     endDate: formatDate(today),
   }
+}
+
+export function formatDisplayDate(value: string) {
+  const [year, month, day] = value.split('-')
+
+  return `${month}/${day}/${year}`
 }
 
 export function normalizeScoreboardPayload(
@@ -144,4 +150,13 @@ function formatDate(date: Date) {
   const day = String(date.getDate()).padStart(2, '0')
 
   return `${year}-${month}-${day}`
+}
+
+function getWeekStart(date: Date) {
+  const start = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  const day = start.getDay()
+  const daysSinceMonday = day === 0 ? 6 : day - 1
+  start.setDate(start.getDate() - daysSinceMonday)
+
+  return start
 }

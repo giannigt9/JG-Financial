@@ -1,42 +1,12 @@
-import { useState } from 'react'
 import { Icon } from '#/components/Icon'
-import { getLiveLeaderboard } from '#/server/leaderboard'
-import type {
-  LeaderboardFilters,
-  LeaderboardState,
-} from '#/server/leaderboard.shared'
+import { formatDisplayDate } from '#/server/leaderboard.shared'
+import type { LeaderboardState } from '#/server/leaderboard.shared'
 
 export function LiveLeaderboardClient({
   initial,
 }: {
   initial: LeaderboardState
 }) {
-  const [filters, setFilters] = useState<LeaderboardFilters>(initial.filters)
-  const [state, setState] = useState(initial)
-  const [pending, setPending] = useState(false)
-
-  async function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    if (filters.startDate > filters.endDate) {
-      setState({
-        entries: [],
-        error: 'Start date must be before end date.',
-        filters,
-        status: 'error',
-        updatedAt: new Date().toISOString(),
-      })
-      return
-    }
-
-    setPending(true)
-    try {
-      setState(await getLiveLeaderboard({ data: filters }))
-    } finally {
-      setPending(false)
-    }
-  }
-
   return (
     <section className="section-pad bg-navy">
       <div className="content-shell">
@@ -45,75 +15,32 @@ export function LiveLeaderboardClient({
             <div className="flex items-center gap-3 text-blue-glow">
               <Icon name="calendar" size={20} />
               <p className="text-xs font-bold uppercase tracking-[.22em]">
-                Submission Date
+                Week To Date
               </p>
             </div>
-            <form className="mt-7 space-y-5" onSubmit={submit}>
-              <DateField
-                label="Start date"
-                name="startDate"
-                onChange={(value) =>
-                  setFilters((current) => ({ ...current, startDate: value }))
-                }
-                value={filters.startDate}
-              />
-              <DateField
-                label="End date"
-                name="endDate"
-                onChange={(value) =>
-                  setFilters((current) => ({ ...current, endDate: value }))
-                }
-                value={filters.endDate}
-              />
-              <button
-                aria-busy={pending}
-                className="min-h-12 w-full border border-blue-bright bg-blue-bright px-5 py-3 text-xs font-bold uppercase tracking-[.18em] text-white transition hover:bg-blue-glow hover:text-navy disabled:cursor-wait disabled:opacity-60"
-                disabled={pending}
-                type="submit"
-              >
-                {pending ? 'Loading' : 'Apply Filter'}
-              </button>
-            </form>
+            <div className="mt-7 border border-blue-line bg-navy p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[.18em] text-white/58">
+                Submission Date Range
+              </p>
+              <p className="mt-3 font-display text-3xl leading-tight text-white">
+                {formatDisplayDate(initial.filters.startDate)}
+                <span className="mx-2 text-blue-glow">to</span>
+                {formatDisplayDate(initial.filters.endDate)}
+              </p>
+            </div>
             <p className="mt-5 text-xs leading-6 text-white/52">
-              Leaderboard requests use AgentSpace production basis and
-              submission-date mode.
+              Week starts Monday. Leaderboard requests use AgentSpace production
+              basis and submission-date mode.
             </p>
           </aside>
 
           <div>
-            <LeaderboardSummary state={state} />
-            <LeaderboardTable entries={state.entries} />
+            <LeaderboardSummary state={initial} />
+            <LeaderboardTable entries={initial.entries} />
           </div>
         </div>
       </div>
     </section>
-  )
-}
-
-function DateField({
-  label,
-  name,
-  onChange,
-  value,
-}: {
-  label: string
-  name: keyof LeaderboardFilters
-  onChange: (value: string) => void
-  value: string
-}) {
-  return (
-    <label className="block">
-      <span className="text-[10px] font-bold uppercase tracking-[.18em] text-white/58">
-        {label}
-      </span>
-      <input
-        className="mt-2 min-h-12 w-full border border-blue-line bg-white/5 px-4 text-white outline-none transition focus:border-blue-bright"
-        name={name}
-        onChange={(event) => onChange(event.target.value)}
-        type="date"
-        value={value}
-      />
-    </label>
   )
 }
 
@@ -133,7 +60,8 @@ function LeaderboardSummary({ state }: { state: LeaderboardState }) {
         <div>
           <p className="eyebrow">Live Results</p>
           <h2 className="mt-3 font-display text-4xl text-white">
-            {state.filters.startDate} to {state.filters.endDate}
+            {formatDisplayDate(state.filters.startDate)} to{' '}
+            {formatDisplayDate(state.filters.endDate)}
           </h2>
         </div>
         <p className="border border-blue-line px-3 py-2 text-[10px] font-bold uppercase tracking-[.16em] text-blue-glow">
@@ -183,7 +111,7 @@ function LeaderboardTable({
       <div className="border border-blue-line bg-navy-2 p-10 text-center">
         <Icon className="mx-auto text-blue-glow" name="trophy" size={38} />
         <p className="mt-5 font-display text-3xl text-white">
-          No leaderboard rows for this filter.
+          No leaderboard rows for this week.
         </p>
       </div>
     )

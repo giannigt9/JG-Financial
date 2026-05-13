@@ -1,24 +1,21 @@
 import { createServerFn } from '@tanstack/react-start'
 import { setResponseHeader } from '@tanstack/react-start/server'
 import {
+  defaultLeaderboardFilters,
   normalizeScoreboardPayload,
-  validateLeaderboardFilters,
 } from './leaderboard.shared'
-import type { LeaderboardFilters, LeaderboardState } from './leaderboard.shared'
+import type { LeaderboardState } from './leaderboard.shared'
 
 const SCOREBOARD_URL = 'https://api.useagentspace.com/api/v1/scoreboard/'
 
-export const getLiveLeaderboard = createServerFn({ method: 'GET' })
-  .inputValidator((input: LeaderboardFilters) =>
-    validateLeaderboardFilters(input),
-  )
-  .handler(async ({ data }) => fetchLiveLeaderboard(data))
+export const getLiveLeaderboard = createServerFn({ method: 'GET' }).handler(
+  async () => fetchLiveLeaderboard(),
+)
 
-async function fetchLiveLeaderboard(
-  filters: LeaderboardFilters,
-): Promise<LeaderboardState> {
+async function fetchLiveLeaderboard(): Promise<LeaderboardState> {
   noStore()
 
+  const filters = defaultLeaderboardFilters()
   const apiKey = process.env.AGENTSPACE_API_KEY
   if (!apiKey) {
     return errorState(
@@ -70,7 +67,7 @@ async function fetchLiveLeaderboard(
 }
 
 function errorState(
-  filters: LeaderboardFilters,
+  filters: ReturnType<typeof defaultLeaderboardFilters>,
   status: 'error' | 'missing_key',
   error: string,
 ): LeaderboardState {

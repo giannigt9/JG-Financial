@@ -1,17 +1,31 @@
 import { describe, expect, test } from 'vitest'
 import {
   defaultLeaderboardFilters,
+  formatDisplayDate,
   normalizeScoreboardPayload,
 } from './leaderboard.shared'
 
 describe('leaderboard data contracts', () => {
-  test('defaults to month-to-date filters', () => {
+  test('defaults to Monday week-to-date filters', () => {
     expect(defaultLeaderboardFilters(new Date('2026-05-13T12:00:00Z'))).toEqual(
       {
-        startDate: '2026-05-01',
+        startDate: '2026-05-11',
         endDate: '2026-05-13',
       },
     )
+  })
+
+  test('uses Monday for Sunday week-to-date filters', () => {
+    expect(defaultLeaderboardFilters(new Date('2026-05-17T12:00:00Z'))).toEqual(
+      {
+        startDate: '2026-05-11',
+        endDate: '2026-05-17',
+      },
+    )
+  })
+
+  test('formats display dates as MM/DD/YYYY', () => {
+    expect(formatDisplayDate('2026-05-13')).toBe('05/13/2026')
   })
 
   test('normalizes common AgentSpace scoreboard payloads', () => {

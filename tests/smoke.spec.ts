@@ -37,7 +37,10 @@ test('primary routes render and navigate', async ({ page }) => {
 
   await clickHeaderLink(page, 'Live Leaderboard')
   await expect(page).toHaveURL(/\/live-leaderboard$/)
-  await expect(page.getByText('Submission Date', { exact: true })).toBeVisible()
+  await expect(page.getByText('Week To Date', { exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Apply Filter' })).toHaveCount(
+    0,
+  )
 })
 
 test('agent portal gates restricted data server-side', async ({ page }) => {
