@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build",
+    "build": "bun run routes:generate && vite build",
     "start": "vite preview --host 0.0.0.0",
     "preview": "vite preview",
     "routes:generate": "tsr generate",
