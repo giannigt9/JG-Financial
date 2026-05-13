@@ -38,16 +38,13 @@ function LeaderboardPanel({ state }: { state: LeaderboardState }) {
 
   return (
     <div>
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-5">
-        <div>
-          <p className="eyebrow">Live Results</p>
-          <h2 className="mt-3 font-display text-4xl text-white">
-            Live production
-          </h2>
-        </div>
+      <div className="mb-6">
+        <p className="eyebrow">Live Results</p>
+        <h2 className="mt-3 font-display text-4xl text-white">
+          Week to date production
+        </h2>
         <LeaderboardMetrics
           producerCount={state.entries.length}
-          status={state.status}
           totalPremium={totalPremium}
           totalSubmitted={totalSubmitted}
         />
@@ -66,32 +63,30 @@ function LeaderboardPanel({ state }: { state: LeaderboardState }) {
 
 function LeaderboardMetrics({
   producerCount,
-  status,
   totalPremium,
   totalSubmitted,
 }: {
   producerCount: number
-  status: LeaderboardState['status']
   totalPremium: number
   totalSubmitted: number
 }) {
   return (
-    <div className="grid grid-cols-2 gap-2 text-right sm:flex sm:items-stretch">
+    <div className="mt-6 grid gap-3 sm:grid-cols-3">
       <SummaryPill label="Producers" value={String(producerCount)} />
-      <SummaryPill label="Submitted" value={String(totalSubmitted)} />
-      <SummaryPill label="Production" value={formatCurrency(totalPremium)} />
-      <p className="col-span-2 border border-blue-line px-3 py-2 text-[10px] font-bold uppercase tracking-[.16em] text-blue-glow sm:col-span-1">
-        {status === 'success' ? 'Connected' : 'Needs Attention'}
-      </p>
+      <SummaryPill label="Deals Submitted" value={String(totalSubmitted)} />
+      <SummaryPill
+        label="Total Production"
+        value={formatCurrency(totalPremium)}
+      />
     </div>
   )
 }
 
 function SummaryPill({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-blue-line px-3 py-2">
-      <p className="text-sm font-extrabold text-white">{value}</p>
-      <p className="mt-1 text-[9px] font-bold uppercase tracking-[.16em] text-blue-pale/55">
+    <div className="border border-blue-line px-5 py-4">
+      <p className="text-2xl font-extrabold text-white">{value}</p>
+      <p className="mt-2 text-[10px] font-bold uppercase tracking-[.16em] text-blue-pale/55">
         {label}
       </p>
     </div>
