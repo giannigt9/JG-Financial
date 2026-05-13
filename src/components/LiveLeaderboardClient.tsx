@@ -39,10 +39,6 @@ function LeaderboardPanel({ state }: { state: LeaderboardState }) {
   return (
     <div>
       <div className="mb-6">
-        <p className="eyebrow">Live Results</p>
-        <h2 className="mt-3 font-display text-4xl text-white">
-          Week to date production
-        </h2>
         <LeaderboardMetrics
           producerCount={state.entries.length}
           totalPremium={totalPremium}
@@ -71,7 +67,7 @@ function LeaderboardMetrics({
   totalSubmitted: number
 }) {
   return (
-    <div className="mt-6 grid gap-3 sm:grid-cols-3">
+    <div className="grid gap-3 sm:grid-cols-3">
       <SummaryPill label="Producers" value={String(producerCount)} />
       <SummaryPill label="Deals Submitted" value={String(totalSubmitted)} />
       <SummaryPill
