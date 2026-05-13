@@ -23,9 +23,7 @@ export function ContactBand({
         </div>
         <div className="flex flex-wrap gap-3">
           <CtaButton cta={primary} />
-          {secondary ? (
-            <CtaButton cta={secondary} variant="outline" />
-          ) : null}
+          {secondary ? <CtaButton cta={secondary} variant="outline" /> : null}
         </div>
       </div>
     </section>

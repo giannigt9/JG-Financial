@@ -19,7 +19,8 @@ export const benefits = [
   },
   {
     title: 'Product Lineup',
-    detail: 'Consultation products that help more clients find the right policy.',
+    detail:
+      'Consultation products that help more clients find the right policy.',
     icon: 'products',
   },
   {

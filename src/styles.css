@@ -1,41 +1,44 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400 800;
   font-display: swap;
-  src: url("/fonts/montserrat-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('/fonts/montserrat-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Cormorant Garamond";
+  font-family: 'Cormorant Garamond';
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
-  src: url("/fonts/cormorant-garamond-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('/fonts/cormorant-garamond-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Cormorant Garamond";
+  font-family: 'Cormorant Garamond';
   font-style: italic;
   font-weight: 300 400;
   font-display: swap;
-  src: url("/fonts/cormorant-garamond-italic-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
-    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('/fonts/cormorant-garamond-italic-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 
 @theme {
-  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
   --color-navy: #061536;
   --color-navy-2: #0a1f4d;
   --color-navy-3: #122c63;
@@ -153,7 +156,7 @@ img {
 }
 
 .nav-link:hover,
-.nav-link[data-active="true"] {
+.nav-link[data-active='true'] {
   color: #7ba8ff;
 }
 
@@ -163,7 +166,7 @@ img {
   left: 24%;
   width: 52%;
   height: 1px;
-  content: "";
+  content: '';
   background: #3b82f6;
   opacity: 0;
   transform: scaleX(0.35);
@@ -173,7 +176,7 @@ img {
 }
 
 .nav-link:hover::after,
-.nav-link[data-active="true"]::after {
+.nav-link[data-active='true']::after {
   opacity: 1;
   transform: scaleX(1);
 }
@@ -185,8 +188,16 @@ img {
   overflow: hidden;
   border: 1px solid rgba(123, 168, 255, 0.2);
   background:
-    radial-gradient(ellipse at 30% 30%, rgba(59, 130, 246, 0.24), transparent 58%),
-    radial-gradient(ellipse at 70% 70%, rgba(123, 168, 255, 0.16), transparent 58%),
+    radial-gradient(
+      ellipse at 30% 30%,
+      rgba(59, 130, 246, 0.24),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse at 70% 70%,
+      rgba(123, 168, 255, 0.16),
+      transparent 58%
+    ),
     linear-gradient(135deg, #0a1f4d, #061536);
   color: #7ba8ff;
 }

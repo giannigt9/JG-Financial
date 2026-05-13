@@ -13,7 +13,11 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-blue-line bg-navy/90 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between px-5 md:px-8">
-        <Link aria-label="JG Financial home" className="bg-white px-3 py-1" to="/">
+        <Link
+          aria-label="JG Financial home"
+          className="bg-white px-3 py-1"
+          to="/"
+        >
           <img
             alt="JG Financial"
             className="h-8 w-auto"

@@ -43,7 +43,9 @@ export const loginPortal = createServerFn({ method: 'POST' })
     noStore()
 
     if (!safeEqual(data.password, getPortalPassword())) {
-      return unauthenticated('Incorrect password. Try again or contact your manager.')
+      return unauthenticated(
+        'Incorrect password. Try again or contact your manager.',
+      )
     }
 
     setCookie(COOKIE_NAME, createSession(), {

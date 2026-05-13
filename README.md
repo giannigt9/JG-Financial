@@ -23,6 +23,7 @@ bun run dev
 bun run typecheck
 bun run lint
 bun run test
+bun run test:budget
 bun run test:e2e
 bun run build
 bun run start

@@ -11,9 +11,14 @@ export function StatGrid({
   items: Array<StatGridItem>
 }) {
   return (
-    <div className={`grid overflow-hidden border border-blue-line bg-blue-line md:grid-cols-2 ${columns}`}>
+    <div
+      className={`grid overflow-hidden border border-blue-line bg-blue-line md:grid-cols-2 ${columns}`}
+    >
       {items.map((item) => (
-        <article className="bg-navy p-8 text-center" key={`${item.value}-${item.label}`}>
+        <article
+          className="bg-navy p-8 text-center"
+          key={`${item.value}-${item.label}`}
+        >
           <p className="gradient-text font-display text-6xl font-semibold">
             {item.value}
           </p>

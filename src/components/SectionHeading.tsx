@@ -10,9 +10,7 @@ export function SectionHeading({
   title: string
 }) {
   const displayTitle =
-    accent && title.includes(accent)
-      ? title.replace(accent, '').trim()
-      : title
+    accent && title.includes(accent) ? title.replace(accent, '').trim() : title
 
   return (
     <div className="mx-auto max-w-4xl text-center">

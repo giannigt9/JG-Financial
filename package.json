@@ -13,6 +13,7 @@
     "routes:generate": "tsr generate",
     "typecheck": "bun run routes:generate && tsc --noEmit",
     "test": "vitest run src",
+    "test:budget": "bun run build && bun scripts/check-build-budget.mjs",
     "test:e2e": "playwright test",
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",

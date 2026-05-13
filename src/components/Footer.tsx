@@ -30,13 +30,21 @@ export function Footer() {
           <a href={contact.xcel} rel="noopener noreferrer" target="_blank">
             Xcel Solutions
           </a>
-          <a href={contact.stateGuide} rel="noopener noreferrer" target="_blank">
+          <a
+            href={contact.stateGuide}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             State Guide
           </a>
           <a href={contact.nipr} rel="noopener noreferrer" target="_blank">
             NIPR Application
           </a>
-          <a href={contact.agentSpace} rel="noopener noreferrer" target="_blank">
+          <a
+            href={contact.agentSpace}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             Agent Login
           </a>
         </FooterColumn>

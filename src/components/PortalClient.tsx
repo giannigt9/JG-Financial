@@ -68,8 +68,8 @@ function PortalLogin({
             Enter <em className="text-blue-glow">Agent Password</em>
           </h2>
           <p className="mt-4 text-sm leading-7 text-white/58">
-            If you are a JG Financial agent and do not know the password, message
-            your manager.
+            If you are a JG Financial agent and do not know the password,
+            message your manager.
           </p>
           <form className="mt-8 flex gap-3" onSubmit={onSubmit}>
             <label className="sr-only" htmlFor="portal-password">
