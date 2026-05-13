@@ -88,4 +88,33 @@ describe('leaderboard data contracts', () => {
       },
     ])
   })
+
+  test('normalizes the live AgentSpace row shape', () => {
+    expect(
+      normalizeScoreboardPayload({
+        leaderboard: [
+          {
+            name: 'Darren D.',
+            rank: 1,
+            total: 9320.4,
+            dealCount: 5,
+            productBreakdown: {
+              life: 0,
+              annuity: 0,
+              iul: 1506,
+              health: 0,
+              other: 7814.4,
+            },
+          },
+        ],
+      }),
+    ).toEqual([
+      {
+        agent: 'Darren D.',
+        annualPremium: 9320.4,
+        rank: 1,
+        submitted: 5,
+      },
+    ])
+  })
 })

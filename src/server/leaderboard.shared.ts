@@ -66,6 +66,7 @@ export function normalizeScoreboardPayload(
         'total_production',
         'premium',
         'total_premium',
+        'total',
         'volume',
         'ap',
         'submitted_ap',
@@ -80,6 +81,8 @@ export function normalizeScoreboardPayload(
         'apps',
         'cases',
         'count',
+        'dealCount',
+        'deal_count',
         'total_count',
       ]),
     }))
@@ -165,7 +168,7 @@ function findNestedNumber(
   keys: Array<string>,
 ): number | undefined {
   if (!isRecord(value)) {
-    return parseNumber(value)
+    return undefined
   }
 
   for (const key of keys) {

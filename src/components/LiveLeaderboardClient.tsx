@@ -1,4 +1,3 @@
-import { formatDisplayDate } from '#/server/leaderboard.shared'
 import type { LeaderboardState } from '#/server/leaderboard.shared'
 
 export function LiveLeaderboardClient({
@@ -31,10 +30,6 @@ function LeaderboardSummary({ state }: { state: LeaderboardState }) {
       <div className="flex flex-wrap items-start justify-between gap-5">
         <div>
           <p className="eyebrow">Live Results</p>
-          <h2 className="mt-3 font-display text-4xl text-white">
-            {formatDisplayDate(state.filters.startDate)} to{' '}
-            {formatDisplayDate(state.filters.endDate)}
-          </h2>
         </div>
         <p className="border border-blue-line px-3 py-2 text-[10px] font-bold uppercase tracking-[.16em] text-blue-glow">
           {state.status === 'success' ? 'Connected' : 'Needs Attention'}
