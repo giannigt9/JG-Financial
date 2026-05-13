@@ -61,4 +61,31 @@ describe('leaderboard data contracts', () => {
       },
     ])
   })
+
+  test('normalizes nested production totals', () => {
+    expect(
+      normalizeScoreboardPayload({
+        results: [
+          {
+            name: 'Nested Producer',
+            metrics: {
+              production: {
+                total_production: '$22,400',
+              },
+              submissions: {
+                count: 8,
+              },
+            },
+          },
+        ],
+      }),
+    ).toEqual([
+      {
+        agent: 'Nested Producer',
+        annualPremium: 22400,
+        rank: 1,
+        submitted: 8,
+      },
+    ])
+  })
 })

@@ -54,9 +54,22 @@ export function normalizeScoreboardPayload(
         'Unknown Producer',
       annualPremium: readNumber(row, [
         'annual_premium',
+        'annualized_premium',
+        'annualized_production',
+        'annual_premium_total',
+        'total_annual_premium',
+        'total_annualized_premium',
         'production',
+        'production_amount',
+        'production_value',
+        'submitted_production',
+        'total_production',
         'premium',
+        'total_premium',
         'volume',
+        'ap',
+        'submitted_ap',
+        'total_ap',
         'score',
       ]),
       rank: readNumber(row, ['rank', 'position']) || index + 1,
@@ -66,6 +79,8 @@ export function normalizeScoreboardPayload(
         'application_count',
         'apps',
         'cases',
+        'count',
+        'total_count',
       ]),
     }))
     .sort((left, right) => left.rank - right.rank)
@@ -124,20 +139,66 @@ function readString(
 
 function readNumber(row: ScoreboardRecord, keys: Array<string>) {
   for (const key of keys) {
-    const value = row[key]
-    if (typeof value === 'number' && Number.isFinite(value)) {
-      return value
+    const directValue = parseNumber(row[key])
+    if (directValue !== undefined) {
+      return directValue
     }
 
-    if (typeof value === 'string') {
-      const parsed = Number(value.replace(/[$,]/g, ''))
-      if (Number.isFinite(parsed)) {
-        return parsed
-      }
+    const nestedValue = findNestedNumber(row[key], keys)
+    if (nestedValue !== undefined) {
+      return nestedValue
+    }
+  }
+
+  for (const value of Object.values(row)) {
+    const nestedValue = findNestedNumber(value, keys)
+    if (nestedValue !== undefined) {
+      return nestedValue
     }
   }
 
   return 0
+}
+
+function findNestedNumber(
+  value: unknown,
+  keys: Array<string>,
+): number | undefined {
+  if (!isRecord(value)) {
+    return parseNumber(value)
+  }
+
+  for (const key of keys) {
+    const directValue = parseNumber(value[key])
+    if (directValue !== undefined) {
+      return directValue
+    }
+  }
+
+  for (const nested of Object.values(value)) {
+    if (isRecord(nested)) {
+      const nestedValue = findNestedNumber(nested, keys)
+      if (nestedValue !== undefined) {
+        return nestedValue
+      }
+    }
+  }
+
+  return undefined
+}
+
+function parseNumber(value: unknown): number | undefined {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value
+  }
+
+  if (typeof value !== 'string') {
+    return undefined
+  }
+
+  const parsed = Number(value.replace(/[$,% ,]/g, ''))
+
+  return Number.isFinite(parsed) ? parsed : undefined
 }
 
 function isRecord(value: unknown): value is ScoreboardRecord {

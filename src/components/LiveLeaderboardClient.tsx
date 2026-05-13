@@ -1,4 +1,3 @@
-import { Icon } from '#/components/Icon'
 import { formatDisplayDate } from '#/server/leaderboard.shared'
 import type { LeaderboardState } from '#/server/leaderboard.shared'
 
@@ -10,35 +9,8 @@ export function LiveLeaderboardClient({
   return (
     <section className="section-pad bg-navy">
       <div className="content-shell">
-        <div className="grid gap-8 lg:grid-cols-[380px_1fr]">
-          <aside className="border border-blue-line bg-gradient-to-br from-navy-2 to-navy p-6 lg:sticky lg:top-28 lg:self-start">
-            <div className="flex items-center gap-3 text-blue-glow">
-              <Icon name="calendar" size={20} />
-              <p className="text-xs font-bold uppercase tracking-[.22em]">
-                Week To Date
-              </p>
-            </div>
-            <div className="mt-7 border border-blue-line bg-navy p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[.18em] text-white/58">
-                Submission Date Range
-              </p>
-              <p className="mt-3 font-display text-3xl leading-tight text-white">
-                {formatDisplayDate(initial.filters.startDate)}
-                <span className="mx-2 text-blue-glow">to</span>
-                {formatDisplayDate(initial.filters.endDate)}
-              </p>
-            </div>
-            <p className="mt-5 text-xs leading-6 text-white/52">
-              Week starts Monday. Leaderboard requests use AgentSpace production
-              basis and submission-date mode.
-            </p>
-          </aside>
-
-          <div>
-            <LeaderboardSummary state={initial} />
-            <LeaderboardTable entries={initial.entries} />
-          </div>
-        </div>
+        <LeaderboardSummary state={initial} />
+        <LeaderboardTable entries={initial.entries} />
       </div>
     </section>
   )
@@ -109,7 +81,6 @@ function LeaderboardTable({
   if (!entries.length) {
     return (
       <div className="border border-blue-line bg-navy-2 p-10 text-center">
-        <Icon className="mx-auto text-blue-glow" name="trophy" size={38} />
         <p className="mt-5 font-display text-3xl text-white">
           No leaderboard rows for this week.
         </p>
