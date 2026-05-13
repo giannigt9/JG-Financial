@@ -12,3 +12,6 @@ coverage
 playwright-report
 test-results
 src/routeTree.gen.ts
+
+# Local Netlify folder
+.netlify
