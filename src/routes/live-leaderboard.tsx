@@ -15,7 +15,6 @@ function LiveLeaderboard() {
     <>
       <PageBanner
         eyebrow="Live Leaderboard"
-        intro="AgentSpace production rankings for week-to-date submissions."
         title={
           <>
             Track the producers
