@@ -3,7 +3,9 @@ import { ContactBand } from '#/components/ContactBand'
 import { PageBanner } from '#/components/PageBanner'
 import { BenefitGrid } from '#/components/sections/BenefitGrid'
 import { PositionCta } from '#/components/sections/PositionCta'
-import { benefits, contact } from '#/content/site'
+import { appRoutes } from '#/config/routes'
+import { benefits } from '#/content/careers'
+import { contact } from '#/content/contact'
 
 export const Route = createFileRoute('/careers')({ component: Careers })
 
@@ -29,7 +31,7 @@ function Careers() {
       <ContactBand
         detail={`${contact.owner} — Agency Owner`}
         primary={{ label: 'Email Julian', href: `mailto:${contact.email}` }}
-        secondary={{ label: 'Get Licensed', to: '/get-licensed' }}
+        secondary={{ label: 'Get Licensed', to: appRoutes.getLicensed }}
         title="Ready to build your future?"
       />
     </>

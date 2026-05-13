@@ -1,7 +1,8 @@
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import { contact, navItems } from '#/content/site'
+import { contact } from '#/content/contact'
+import { navItems } from '#/content/navigation'
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -13,7 +14,13 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-blue-line bg-navy/90 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between px-5 md:px-8">
         <Link aria-label="JG Financial home" className="bg-white px-3 py-1" to="/">
-          <img alt="JG Financial" className="h-8 w-auto" src="/jg-logo.png" />
+          <img
+            alt="JG Financial"
+            className="h-8 w-auto"
+            height="32"
+            src="/jg-logo.png"
+            width="192"
+          />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => (
@@ -37,6 +44,7 @@ export function Header() {
         </nav>
         <button
           aria-expanded={open}
+          aria-controls="primary-navigation"
           aria-label="Toggle menu"
           className="grid size-11 place-items-center border border-blue-line text-white lg:hidden"
           onClick={() => setOpen((value) => !value)}
@@ -47,7 +55,7 @@ export function Header() {
       </div>
       {open ? (
         <div className="border-t border-blue-line bg-navy px-5 py-5 lg:hidden">
-          <nav className="flex flex-col">
+          <nav className="flex flex-col" id="primary-navigation">
             {navItems.map((item) => (
               <Link
                 className="border-b border-blue-line py-4 text-sm font-bold uppercase tracking-[.18em] text-white"

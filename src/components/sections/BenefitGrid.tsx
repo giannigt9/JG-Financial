@@ -8,26 +8,24 @@ import {
   Trophy,
   WalletCards,
 } from 'lucide-react'
-import type { benefits } from '#/content/site'
+import type { BenefitIcon, BenefitItem } from '#/content/types'
 
-type Benefit = (typeof benefits)[number]
+const benefitIcons = {
+  agency: Building2,
+  coaching: Trophy,
+  conventions: Plane,
+  leads: ChartNoAxesCombined,
+  payouts: Gem,
+  products: MapPinned,
+  remote: Globe2,
+  residuals: WalletCards,
+} satisfies Record<BenefitIcon, React.ComponentType<{ className?: string; size?: number }>>
 
-const benefitIcons = [
-  Building2,
-  Globe2,
-  WalletCards,
-  MapPinned,
-  Gem,
-  Plane,
-  Trophy,
-  ChartNoAxesCombined,
-]
-
-export function BenefitGrid({ items }: { items: Array<Benefit> }) {
+export function BenefitGrid({ items }: { items: Array<BenefitItem> }) {
   return (
     <div className="grid border border-blue-line bg-blue-line md:grid-cols-2 xl:grid-cols-4">
-      {items.map((benefit, index) => {
-        const Icon = benefitIcons[index] ?? Trophy
+      {items.map((benefit) => {
+        const Icon = benefitIcons[benefit.icon]
         return (
           <article className="bg-navy p-8 text-center" key={benefit.title}>
             <Icon className="mx-auto text-blue-glow" size={38} />

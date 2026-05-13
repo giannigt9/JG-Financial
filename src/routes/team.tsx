@@ -2,7 +2,9 @@ import { createFileRoute } from '@tanstack/react-router'
 import { ContactBand } from '#/components/ContactBand'
 import { PageBanner } from '#/components/PageBanner'
 import { ManagerGrid } from '#/components/sections/ManagerGrid'
-import { contact, managers } from '#/content/site'
+import { appRoutes } from '#/config/routes'
+import { contact } from '#/content/contact'
+import { managers } from '#/content/team'
 
 export const Route = createFileRoute('/team')({ component: Team })
 
@@ -31,7 +33,7 @@ function Team() {
       <ContactBand
         detail="Reach out and we will get you connected with the right manager."
         primary={{ label: 'Email Julian', href: `mailto:${contact.email}` }}
-        secondary={{ label: 'Apply', to: '/careers' }}
+        secondary={{ label: 'Apply', to: appRoutes.careers }}
         title="Want to work with the team?"
       />
     </>

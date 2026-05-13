@@ -1,8 +1,6 @@
-import type { faqs } from '#/content/site'
+import type { FaqItem } from '#/content/types'
 
-type Faq = (typeof faqs)[number]
-
-export function FaqList({ items }: { items: Array<Faq> }) {
+export function FaqList({ items }: { items: Array<FaqItem> }) {
   return (
     <div className="space-y-4">
       {items.map((faq) => (

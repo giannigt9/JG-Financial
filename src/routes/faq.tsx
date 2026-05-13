@@ -2,7 +2,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { ContactBand } from '#/components/ContactBand'
 import { PageBanner } from '#/components/PageBanner'
 import { FaqList } from '#/components/sections/FaqList'
-import { contact, faqs } from '#/content/site'
+import { contact } from '#/content/contact'
+import { faqs } from '#/content/faq'
 
 export const Route = createFileRoute('/faq')({ component: Faq })
 

@@ -1,19 +1,14 @@
 import { Target } from 'lucide-react'
 import { SectionHeading } from '#/components/SectionHeading'
-import type { compensationFormula, mathRows } from '#/content/site'
-
-type MathRow = (typeof mathRows)[number]
+import type { CompensationFormula, MathRow } from '#/content/types'
 
 export function MathSection({
   formula,
   rows,
 }: {
-  formula: typeof compensationFormula
+  formula: CompensationFormula
   rows: Array<MathRow>
 }) {
-  const [start, ...rest] = formula
-  const result = rest.pop()
-
   return (
     <section className="section-pad bg-navy-2">
       <div className="content-shell">
@@ -39,13 +34,13 @@ export function MathSection({
         <div className="mt-12 border border-blue-line bg-gradient-to-br from-navy to-navy-3 p-8 text-center">
           <p className="eyebrow mb-4">The Compensation Math</p>
           <p className="font-display text-[clamp(1.5rem,3vw,2.25rem)] italic leading-snug text-white/88">
-            {start}{' '}
-            {rest.map((item) => (
+            {formula.factors[0]}{' '}
+            {formula.factors.slice(1).map((item) => (
               <span key={item}>
                 × <span className="text-blue-glow">{item}</span>{' '}
               </span>
             ))}
-            = {result}
+            = {formula.result}
           </p>
         </div>
       </div>

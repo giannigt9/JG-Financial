@@ -1,7 +1,5 @@
 import { ButtonLink } from '#/components/ButtonLink'
-import type { licenseSteps } from '#/content/site'
-
-type ProcessStep = (typeof licenseSteps)[number]
+import type { ProcessStep } from '#/content/types'
 
 export function ProcessGrid({ steps }: { steps: Array<ProcessStep> }) {
   return (
@@ -22,13 +20,8 @@ export function ProcessGrid({ steps }: { steps: Array<ProcessStep> }) {
           </p>
           <div className="mt-5">
             {step.link ? (
-              <ButtonLink href={step.link.href} variant="text">
+              <ButtonLink {...step.link} variant="text">
                 {step.link.label}
-              </ButtonLink>
-            ) : null}
-            {step.internalLink ? (
-              <ButtonLink to={step.internalLink.to} variant="text">
-                {step.internalLink.label}
               </ButtonLink>
             ) : null}
           </div>

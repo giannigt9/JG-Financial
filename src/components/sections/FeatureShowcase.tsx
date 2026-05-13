@@ -11,22 +11,20 @@ import {
 } from 'lucide-react'
 import { ButtonLink } from '#/components/ButtonLink'
 import { SectionHeading } from '#/components/SectionHeading'
-import type { features } from '#/content/site'
+import type { FeatureIcon, FeatureItem } from '#/content/types'
 
-type Feature = (typeof features)[number]
+const featureIcons = {
+  analytics: BarChart3,
+  calendar: CalendarDays,
+  carrierAccess: ShieldCheck,
+  dialer: PhoneCall,
+  growth: Sparkles,
+  mentorship: Users,
+  products: Diamond,
+  support: Headphones,
+} satisfies Record<FeatureIcon, React.ComponentType<{ size?: number; strokeWidth?: number }>>
 
-const featureIcons = [
-  PhoneCall,
-  BarChart3,
-  Diamond,
-  Users,
-  ShieldCheck,
-  CalendarDays,
-  Headphones,
-  Sparkles,
-]
-
-export function FeatureShowcase({ items }: { items: Array<Feature> }) {
+export function FeatureShowcase({ items }: { items: Array<FeatureItem> }) {
   return (
     <section className="section-pad bg-navy">
       <div className="content-shell">
@@ -38,7 +36,7 @@ export function FeatureShowcase({ items }: { items: Array<Feature> }) {
         />
         <div className="mt-20 space-y-24">
           {items.map((feature, index) => {
-            const Icon = featureIcons[index] ?? Sparkles
+            const Icon = featureIcons[feature.icon]
 
             return (
               <article
@@ -56,8 +54,8 @@ export function FeatureShowcase({ items }: { items: Array<Feature> }) {
                   <p className="max-w-xl text-[15px] leading-8 text-white/62">
                     {feature.description}
                   </p>
-                  <ButtonLink className="mt-8" to={feature.href} variant="text">
-                    {feature.cta}
+                  <ButtonLink className="mt-8" {...feature.cta} variant="text">
+                    {feature.cta.label}
                     <ArrowRight size={16} />
                   </ButtonLink>
                 </div>

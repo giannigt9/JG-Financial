@@ -7,6 +7,8 @@ import { MathSection } from '#/components/sections/MathSection'
 import { ScheduleGrid } from '#/components/sections/ScheduleGrid'
 import { StatGrid } from '#/components/sections/StatGrid'
 import { WhySection } from '#/components/sections/WhySection'
+import { appRoutes } from '#/config/routes'
+import { contact } from '#/content/contact'
 import {
   compensationFormula,
   features,
@@ -14,7 +16,7 @@ import {
   schedule,
   stats,
   whyPillars,
-} from '#/content/site'
+} from '#/content/home'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -47,9 +49,9 @@ function Home() {
         detail="Julian Gaviria — Agency Owner"
         primary={{
           label: 'Email Julian',
-          href: 'mailto:julianmginsurance@gmail.com',
+          href: `mailto:${contact.email}`,
         }}
-        secondary={{ label: 'View Careers', to: '/careers' }}
+        secondary={{ label: 'View Careers', to: appRoutes.careers }}
       />
     </>
   )

@@ -3,7 +3,9 @@ import { ContactBand } from '#/components/ContactBand'
 import { PageBanner } from '#/components/PageBanner'
 import { StatGrid } from '#/components/sections/StatGrid'
 import { VideoFeature } from '#/components/sections/VideoFeature'
-import { contact, industryMetrics } from '#/content/site'
+import { appRoutes } from '#/config/routes'
+import { contact } from '#/content/contact'
+import { industryMetrics } from '#/content/industry'
 
 export const Route = createFileRoute('/industry')({ component: Industry })
 
@@ -32,7 +34,7 @@ function Industry() {
       <ContactBand
         detail="Get answers and start the conversation."
         primary={{ label: 'Email Julian', href: `mailto:${contact.email}` }}
-        secondary={{ label: 'Read FAQ', to: '/faq' }}
+        secondary={{ label: 'Read FAQ', to: appRoutes.faq }}
         title="Got questions after the video?"
       />
     </>

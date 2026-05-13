@@ -1,4 +1,5 @@
 import { ButtonLink } from '#/components/ButtonLink'
+import { appRoutes } from '#/config/routes'
 
 export function HomeHero() {
   return (
@@ -21,8 +22,8 @@ export function HomeHero() {
           Build the income · Build the legacy · Build the life
         </p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <ButtonLink to="/careers">Join the Agency</ButtonLink>
-          <ButtonLink to="/get-licensed" variant="outline">
+          <ButtonLink to={appRoutes.careers}>Join the Agency</ButtonLink>
+          <ButtonLink to={appRoutes.getLicensed} variant="outline">
             Get Licensed
           </ButtonLink>
         </div>

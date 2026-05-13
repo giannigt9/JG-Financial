@@ -3,7 +3,8 @@ import { ContactBand } from '#/components/ContactBand'
 import { PageBanner } from '#/components/PageBanner'
 import { CostSummary } from '#/components/sections/CostSummary'
 import { ProcessGrid } from '#/components/sections/ProcessGrid'
-import { contact, licenseSteps, onboardingCosts } from '#/content/site'
+import { contact } from '#/content/contact'
+import { licenseSteps, onboardingCosts } from '#/content/licensing'
 
 export const Route = createFileRoute('/get-licensed')({
   component: GetLicensed,

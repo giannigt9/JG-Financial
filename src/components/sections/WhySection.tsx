@@ -1,8 +1,6 @@
-import type { whyPillars } from '#/content/site'
+import type { PillarItem } from '#/content/types'
 
-type Pillar = (typeof whyPillars)[number]
-
-export function WhySection({ pillars }: { pillars: Array<Pillar> }) {
+export function WhySection({ pillars }: { pillars: Array<PillarItem> }) {
   return (
     <section className="section-pad bg-gradient-to-b from-navy to-[#020920]">
       <div className="content-shell max-w-5xl text-center">

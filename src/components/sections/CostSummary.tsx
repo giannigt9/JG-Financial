@@ -1,6 +1,4 @@
-import type { onboardingCosts } from '#/content/site'
-
-type CostRow = (typeof onboardingCosts)[number]
+import type { CostRow } from '#/content/types'
 
 export function CostSummary({ rows }: { rows: Array<CostRow> }) {
   return (

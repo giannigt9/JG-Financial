@@ -1,11 +1,5 @@
-import type { LinkProps } from '@tanstack/react-router'
 import { ButtonLink } from './ButtonLink'
-
-type Cta = {
-  href?: string
-  label: string
-  to?: LinkProps['to']
-}
+import type { LinkCta } from '#/content/types'
 
 export function ContactBand({
   detail,
@@ -14,8 +8,8 @@ export function ContactBand({
   title,
 }: {
   detail: string
-  primary: Cta
-  secondary?: Cta
+  primary: LinkCta
+  secondary?: LinkCta
   title: string
 }) {
   return (
@@ -28,20 +22,26 @@ export function ContactBand({
           <p className="mt-4 text-sm text-white/62">{detail}</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <ButtonLink href={primary.href} to={primary.to}>
-            {primary.label}
-          </ButtonLink>
+          <CtaButton cta={primary} />
           {secondary ? (
-            <ButtonLink
-              href={secondary.href}
-              to={secondary.to}
-              variant="outline"
-            >
-              {secondary.label}
-            </ButtonLink>
+            <CtaButton cta={secondary} variant="outline" />
           ) : null}
         </div>
       </div>
     </section>
+  )
+}
+
+function CtaButton({
+  cta,
+  variant = 'primary',
+}: {
+  cta: LinkCta
+  variant?: 'outline' | 'primary'
+}) {
+  return (
+    <ButtonLink {...cta} variant={variant}>
+      {cta.label}
+    </ButtonLink>
   )
 }

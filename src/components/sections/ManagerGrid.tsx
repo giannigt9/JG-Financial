@@ -1,8 +1,6 @@
-import type { managers } from '#/content/site'
+import type { ManagerProfile } from '#/content/types'
 
-type Manager = (typeof managers)[number]
-
-export function ManagerGrid({ items }: { items: Array<Manager> }) {
+export function ManagerGrid({ items }: { items: Array<ManagerProfile> }) {
   return (
     <div className="grid gap-8 md:grid-cols-3">
       {items.map((manager) => (

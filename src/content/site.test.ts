@@ -1,5 +1,8 @@
 import { describe, expect, test } from 'vitest'
-import { faqs, licenseSteps, navItems, stats } from './site'
+import { navItems } from './navigation'
+import { faqs } from './faq'
+import { licenseSteps } from './licensing'
+import { stats } from './home'
 
 describe('site content contracts', () => {
   test('keeps primary routes in the navigation', () => {

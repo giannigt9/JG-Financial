@@ -1,3 +1,21 @@
+export type PortalAction = {
+  href: string
+  label: string
+}
+
+export type PortalSection = {
+  actions?: Array<PortalAction>
+  badge: string
+  body: string
+  title: string
+}
+
+export type PortalTab = {
+  id: string
+  label: string
+  sections: Array<PortalSection>
+}
+
 export const portalTabs = [
   {
     id: 'contracting',
@@ -148,6 +166,4 @@ export const portalTabs = [
       },
     ],
   },
-]
-
-export type PortalTab = (typeof portalTabs)[number]
+] satisfies Array<PortalTab>

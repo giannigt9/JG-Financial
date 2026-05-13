@@ -1,12 +1,19 @@
 import { Link } from '@tanstack/react-router'
-import { contact, navItems } from '#/content/site'
+import { contact } from '#/content/contact'
+import { navItems } from '#/content/navigation'
 
 export function Footer() {
   return (
     <footer className="border-t border-blue-line bg-blue-deep px-6 py-14">
       <div className="content-shell grid gap-12 border-b border-white/10 pb-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <img alt="JG Financial" className="h-11 w-auto bg-white px-3 py-1" src="/jg-logo.png" />
+          <img
+            alt="JG Financial"
+            className="h-11 w-auto bg-white px-3 py-1"
+            height="44"
+            src="/jg-logo.png"
+            width="264"
+          />
           <p className="mt-6 max-w-sm text-sm leading-7 text-white/42">
             Protecting families. Empowering agents. Built for the virtual sales
             professional who wants the lifestyle they deserve.

@@ -1,7 +1,5 @@
 import { SectionHeading } from '#/components/SectionHeading'
-import type { schedule } from '#/content/site'
-
-type ScheduleDay = (typeof schedule)[number]
+import type { ScheduleDay } from '#/content/types'
 
 export function ScheduleGrid({ days }: { days: Array<ScheduleDay> }) {
   return (
