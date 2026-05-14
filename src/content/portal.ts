@@ -1,4 +1,5 @@
 export type PortalAction = {
+  download?: string
   href: string
   label: string
 }
@@ -164,8 +165,15 @@ export const portalTabs = [
     sections: [
       {
         title: 'Promotional Guidelines',
-        badge: 'Coming Soon',
-        body: 'Brand standards, social rules, compliance reminders, logo usage, and approved promotional templates.',
+        badge: 'PDF',
+        body: 'Download the approved JG Financial promotional guidelines before posting or sharing brand materials.',
+        actions: [
+          {
+            label: 'Download Guidelines',
+            href: '/assets/jg_financial_promo_guidelines.pdf',
+            download: 'jg_financial_promo_guidelines.pdf',
+          },
+        ],
       },
     ],
   },

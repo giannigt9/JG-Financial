@@ -150,10 +150,11 @@ function PortalSection({ tab }: { tab: PortalTab }) {
                 {section.actions.map((action) => (
                   <a
                     className="border border-blue-line px-4 py-3 text-xs font-bold uppercase tracking-[.16em] text-blue-glow transition hover:border-blue-bright hover:text-white"
+                    download={action.download}
                     href={action.href}
                     key={action.href}
-                    rel="noopener noreferrer"
-                    target="_blank"
+                    rel={action.download ? undefined : 'noopener noreferrer'}
+                    target={action.download ? undefined : '_blank'}
                   >
                     {action.label}
                   </a>

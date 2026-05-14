@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
 import { appRoutes } from '#/config/routes'
 import { benefits } from './careers'
@@ -73,8 +74,32 @@ describe('site content contracts', () => {
         tab.sections.every(
           (section) =>
             section.actions?.every((action) =>
-              action.href.startsWith('https://'),
+              action.download
+                ? action.href.startsWith('/')
+                : action.href.startsWith('https://'),
             ) ?? true,
+        ),
+      ),
+    ).toBe(true)
+  })
+
+  test('keeps promotional guidelines as a local PDF download', () => {
+    const promo = portalTabs.find((tab) => tab.id === 'promo')
+    const guidelines = promo?.sections.find(
+      (section) => section.title === 'Promotional Guidelines',
+    )
+    const action = guidelines?.actions?.[0]
+
+    expect(action).toEqual({
+      label: 'Download Guidelines',
+      href: '/assets/jg_financial_promo_guidelines.pdf',
+      download: 'jg_financial_promo_guidelines.pdf',
+    })
+    expect(
+      existsSync(
+        new URL(
+          '../../public/assets/jg_financial_promo_guidelines.pdf',
+          import.meta.url,
         ),
       ),
     ).toBe(true)
