@@ -80,13 +80,19 @@ describe('site content contracts', () => {
     ).toBe(true)
   })
 
-  test('keeps dialer buying options structured', () => {
+  test('keeps state buying options under contracting and dialer', () => {
+    const contracting = portalTabs.find((tab) => tab.id === 'contracting')
     const dialer = portalTabs.find((tab) => tab.id === 'dialer')
-    const buyingOption: PortalSection | undefined = dialer?.sections.find(
+    const contractingBuyingOption: PortalSection | undefined =
+      contracting?.sections.find(
+        (section) => section.title === 'Dialer Buying Option',
+      )
+    const dialerBuyingOption: PortalSection | undefined = dialer?.sections.find(
       (section) => section.title === 'Dialer Buying Option',
     )
 
-    expect(buyingOption?.stateCodes).toEqual([
+    expect(contractingBuyingOption).toEqual(dialerBuyingOption)
+    expect(contractingBuyingOption?.stateCodes).toEqual([
       'NV',
       'UT',
       'ID',
@@ -104,7 +110,7 @@ describe('site content contracts', () => {
       'MD',
       'SC',
     ])
-    expect(buyingOption?.licenseCosts).toEqual([
+    expect(contractingBuyingOption?.licenseCosts).toEqual([
       { state: 'Michigan', cost: '$10' },
       { state: 'Kansas', cost: '$40' },
       { state: 'Indiana', cost: '$80' },

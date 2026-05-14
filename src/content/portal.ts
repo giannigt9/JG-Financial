@@ -23,6 +23,38 @@ export type PortalTab = {
   sections: Array<PortalSection>
 }
 
+const stateBuyingSection: PortalSection = {
+  title: 'Dialer Buying Option',
+  badge: 'States to Buy',
+  body: 'Pick up these states when buying dialer inventory.',
+  stateCodes: [
+    'NV',
+    'UT',
+    'ID',
+    'NE',
+    'LA',
+    'OK',
+    'IN',
+    'FL',
+    'TX',
+    'KY',
+    'MI',
+    'MO',
+    'KS',
+    'AZ',
+    'MD',
+    'SC',
+  ],
+  licenseCosts: [
+    { state: 'Michigan', cost: '$10' },
+    { state: 'Kansas', cost: '$40' },
+    { state: 'Indiana', cost: '$80' },
+    { state: 'Louisiana', cost: '$75' },
+    { state: 'Idaho', cost: '$80' },
+    { state: 'Utah', cost: '$80' },
+  ],
+}
+
 export const portalTabs = [
   {
     id: 'contracting',
@@ -66,6 +98,7 @@ export const portalTabs = [
         badge: 'Manual Contracting',
         body: 'Baltimore Life, United Home Life, and Polish Falcons of America. Contact your direct upline to get appointed.',
       },
+      stateBuyingSection,
       {
         title: 'AgentSpace',
         badge: 'Active Agents',
@@ -116,37 +149,7 @@ export const portalTabs = [
           },
         ],
       },
-      {
-        title: 'Dialer Buying Option',
-        badge: 'States to Buy',
-        body: 'Pick up these states when buying dialer inventory.',
-        stateCodes: [
-          'NV',
-          'UT',
-          'ID',
-          'NE',
-          'LA',
-          'OK',
-          'IN',
-          'FL',
-          'TX',
-          'KY',
-          'MI',
-          'MO',
-          'KS',
-          'AZ',
-          'MD',
-          'SC',
-        ],
-        licenseCosts: [
-          { state: 'Michigan', cost: '$10' },
-          { state: 'Kansas', cost: '$40' },
-          { state: 'Indiana', cost: '$80' },
-          { state: 'Louisiana', cost: '$75' },
-          { state: 'Idaho', cost: '$80' },
-          { state: 'Utah', cost: '$80' },
-        ],
-      },
+      stateBuyingSection,
     ],
   },
   {
