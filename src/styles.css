@@ -48,12 +48,6 @@
   --color-blue-pale: #dde6ff;
   --color-blue-line: rgba(123, 168, 255, 0.18);
   --color-surface-hero: #061536;
-  --color-paper: oklch(0.965 0.018 82);
-  --color-parchment: oklch(0.935 0.026 82);
-  --color-ink: oklch(0.225 0.052 255);
-  --color-copper: oklch(0.515 0.108 52);
-  --color-copper-strong: oklch(0.43 0.115 45);
-  --color-copper-light: oklch(0.75 0.09 58);
 }
 
 *,
@@ -187,38 +181,29 @@ img {
   transform: scaleX(1);
 }
 
-.site-header[data-theme='paper'] .nav-link {
-  color: color-mix(in oklab, var(--color-ink) 78%, transparent);
-}
-
-.site-header[data-theme='paper'] .nav-link:hover,
-.site-header[data-theme='paper'] .nav-link[data-active='true'] {
-  color: var(--color-copper-strong);
-}
-
-.site-header[data-theme='paper'] .nav-link::after {
-  background: var(--color-copper);
-}
-
-.site-header[data-theme='paper'] .community-link {
-  border-color: color-mix(in oklab, var(--color-copper) 86%, transparent);
-  background: var(--color-ink);
-  color: var(--color-paper);
-}
-
 .leaderboard-page {
   background:
     radial-gradient(
         circle at 18px 22px,
-        color-mix(in oklab, var(--color-copper) 9%, transparent) 0 1px,
+        rgba(123, 168, 255, 0.07) 0 1px,
         transparent 1px 100%
       )
       0 0 / 34px 34px,
+    radial-gradient(
+      ellipse at 18% 15%,
+      rgba(59, 130, 246, 0.18),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 82% 28%,
+      rgba(123, 168, 255, 0.12),
+      transparent 42%
+    ),
     linear-gradient(
       108deg,
-      color-mix(in oklab, var(--color-paper) 82%, var(--color-copper) 18%),
-      var(--color-paper) 44%,
-      color-mix(in oklab, var(--color-paper) 88%, var(--color-ink) 12%)
+      var(--color-navy),
+      var(--color-navy-2) 48%,
+      var(--color-navy)
     );
 }
 
@@ -248,16 +233,16 @@ img {
     linear-gradient(
       141deg,
       transparent 0 44%,
-      color-mix(in oklab, var(--color-copper-light) 76%, transparent) 44% 45%,
+      rgba(123, 168, 255, 0.54) 44% 45%,
       transparent 45% 100%
     ),
     linear-gradient(
       158deg,
       transparent 0 54%,
-      color-mix(in oklab, var(--color-copper-light) 58%, transparent) 54% 55%,
+      rgba(123, 168, 255, 0.38) 54% 55%,
       transparent 55% 100%
     ),
-    color-mix(in oklab, var(--color-copper) 16%, transparent);
+    rgba(123, 168, 255, 0.12);
 }
 
 .leaderboard-peak::after {
@@ -267,10 +252,10 @@ img {
     linear-gradient(
       142deg,
       transparent 0 42%,
-      color-mix(in oklab, var(--color-paper) 42%, transparent) 42% 43%,
+      rgba(221, 230, 255, 0.26) 42% 43%,
       transparent 43% 100%
     ),
-    color-mix(in oklab, var(--color-ink) 62%, transparent);
+    rgba(1, 8, 28, 0.58);
 }
 
 .feature-panel {

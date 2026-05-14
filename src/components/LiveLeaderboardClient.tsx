@@ -8,12 +8,13 @@ type LeaderboardEntry = LeaderboardState['entries'][number]
 const TOP_ENTRY_LIMIT = 10
 
 const AVATAR_STYLES = [
-  'border-ink/15 bg-ink text-paper',
-  'border-copper/25 bg-copper text-paper',
-  'border-ink/15 bg-ink text-paper',
-  'border-copper/25 bg-copper text-paper',
-  'border-ink/15 bg-ink text-paper',
-  'border-copper/25 bg-copper text-paper',
+  'border-blue-line bg-[linear-gradient(145deg,#f28a34,#b84d2e)] text-blue-pale',
+  'border-blue-line bg-[linear-gradient(145deg,#9d8a79,#584a42)] text-blue-pale',
+  'border-blue-line bg-[linear-gradient(145deg,#3a8c2f,#1a541c)] text-blue-pale',
+  'border-blue-line bg-[linear-gradient(145deg,#55b9aa,#217469)] text-blue-pale',
+  'border-blue-line bg-[linear-gradient(145deg,#4f8df4,#2055bd)] text-blue-pale',
+  'border-blue-line bg-[linear-gradient(145deg,#64c9bf,#2c8f86)] text-blue-pale',
+  'border-blue-line bg-[linear-gradient(145deg,#b47458,#6e3f31)] text-blue-pale',
 ] as const
 
 export function LiveLeaderboardClient({
@@ -22,7 +23,7 @@ export function LiveLeaderboardClient({
   initial: LeaderboardState
 }) {
   return (
-    <section className="leaderboard-page min-h-screen bg-paper px-4 pb-16 pt-28 text-ink sm:px-8 lg:px-12 lg:pb-24 lg:pt-32">
+    <section className="leaderboard-page min-h-screen bg-navy px-4 pb-16 pt-28 text-blue-pale sm:px-8 lg:px-12 lg:pb-24 lg:pt-32">
       <div className="mx-auto w-full max-w-[1420px]">
         <LeaderboardPanel state={initial} />
       </div>
@@ -62,7 +63,7 @@ function LeaderboardPanel({ state }: { state: LeaderboardState }) {
       ) : (
         <LeaderboardError message={state.error} />
       )}
-      <p className="mt-8 text-right text-[11px] font-bold uppercase leading-none tracking-[.28em] text-ink/58">
+      <p className="mt-8 text-right text-[11px] font-bold uppercase leading-none tracking-[.28em] text-blue-pale/58">
         Last updated: {formatUpdatedAt(state.updatedAt)}
       </p>
     </div>
@@ -85,22 +86,22 @@ function LeaderboardIntro({
       <div className="relative">
         <div
           aria-hidden="true"
-          className="absolute -right-5 top-0 hidden size-44 rounded-full border border-copper/12 text-center font-display text-[6rem] leading-[1.6] text-copper/10 lg:block"
+          className="absolute -right-5 top-0 hidden size-44 rounded-full border border-blue-line text-center font-display text-[6rem] leading-[1.6] text-blue-glow/10 lg:block"
         >
           JG
         </div>
-        <p className="font-display text-[4rem] font-light italic leading-none text-copper-strong sm:text-[5.25rem]">
+        <p className="font-display text-[4rem] font-light italic leading-none text-blue-glow sm:text-[5.25rem]">
           Live
         </p>
-        <h1 className="-mt-2 font-display text-[4.7rem] font-light leading-[.9] text-ink sm:text-[6.5rem]">
+        <h1 className="-mt-2 font-display text-[4.7rem] font-light leading-[.9] text-blue-pale sm:text-[6.5rem]">
           Leaderboard
         </h1>
-        <div className="mt-7 h-px w-16 bg-copper" />
-        <p className="mt-5 max-w-md text-[11px] font-bold uppercase leading-6 tracking-[.34em] text-ink/72">
+        <div className="mt-7 h-px w-16 bg-blue-bright" />
+        <p className="mt-5 max-w-md text-[11px] font-bold uppercase leading-6 tracking-[.34em] text-blue-pale/72">
           Recognizing today&apos;s top producers building tomorrow&apos;s
           legacy.
         </p>
-        <p className="mt-3 text-xs font-semibold uppercase tracking-[.22em] text-copper-strong">
+        <p className="mt-3 text-xs font-semibold uppercase tracking-[.22em] text-blue-glow">
           {formatDisplayDate(filters.startDate)} to{' '}
           {formatDisplayDate(filters.endDate)}
         </p>
@@ -159,18 +160,18 @@ function MetricItem({
   value: string
 }) {
   return (
-    <article className="border-copper/22 flex items-center gap-4 border-l px-4 py-3 first:border-l-0 first:pl-0 max-sm:border-l-0 max-sm:border-t max-sm:first:border-t-0 max-sm:first:pt-0">
-      <div className="grid size-14 shrink-0 place-items-center rounded-full border border-copper/20 bg-parchment text-ink shadow-[inset_0_0_0_8px_rgba(111,67,38,0.035)]">
+    <article className="flex items-center gap-4 border-l border-blue-line px-4 py-3 first:border-l-0 first:pl-0 max-sm:border-l-0 max-sm:border-t max-sm:first:border-t-0 max-sm:first:pt-0">
+      <div className="grid size-14 shrink-0 place-items-center rounded-full border border-blue-line bg-navy-2/40 text-blue-glow shadow-[inset_0_0_0_8px_rgba(123,168,255,0.035)]">
         <Icon name={icon} size={24} strokeWidth={1.75} />
       </div>
       <div className="min-w-0">
-        <p className="text-[11px] font-bold uppercase leading-none tracking-[.22em] text-ink/78">
+        <p className="text-[11px] font-bold uppercase leading-none tracking-[.22em] text-blue-pale/70">
           {label}
         </p>
-        <p className="mt-2 font-display text-5xl font-light leading-none text-ink tabular-nums">
+        <p className="mt-2 font-display text-5xl font-light leading-none text-blue-pale tabular-nums">
           {value}
         </p>
-        <p className="mt-2 text-[10px] font-bold uppercase leading-none tracking-[.24em] text-copper-strong">
+        <p className="mt-2 text-[10px] font-bold uppercase leading-none tracking-[.24em] text-blue-glow">
           {detail}
         </p>
       </div>
@@ -180,50 +181,50 @@ function MetricItem({
 
 function TopProducerFeature({ entry }: { entry: LeaderboardEntry }) {
   return (
-    <article className="relative min-h-[34rem] overflow-hidden border border-copper/26 bg-ink p-5 text-paper shadow-[0_30px_80px_rgba(25,38,57,0.14)] sm:p-7 lg:p-9">
+    <article className="relative min-h-[34rem] overflow-hidden border border-blue-line bg-navy-2 p-5 text-blue-pale shadow-[0_30px_80px_rgba(1,8,28,0.28)] sm:p-7 lg:p-9">
       <div className="leaderboard-peak" aria-hidden="true" />
       <div
         aria-hidden="true"
-        className="absolute right-14 top-14 hidden rounded-full border border-copper/18 px-6 py-4 font-display text-5xl text-copper/20 xl:block"
+        className="absolute right-14 top-14 hidden rounded-full border border-blue-line px-6 py-4 font-display text-5xl text-blue-glow/18 xl:block"
       >
         JG
       </div>
       <div className="relative grid gap-8 md:grid-cols-[.65fr_1fr] md:items-center">
-        <div className="border-b border-copper/45 pb-8 md:border-b-0 md:border-r md:pb-0 md:pr-8">
-          <p className="text-xs font-bold uppercase tracking-[.28em] text-copper-light">
+        <div className="border-b border-blue-line pb-8 md:border-b-0 md:border-r md:pb-0 md:pr-8">
+          <p className="text-xs font-bold uppercase tracking-[.28em] text-blue-glow">
             Rank
           </p>
-          <p className="mt-4 font-display text-[8rem] font-light leading-none text-copper-light sm:text-[10rem]">
+          <p className="mt-4 font-display text-[8rem] font-light leading-none text-blue-glow sm:text-[10rem]">
             {formatRank(entry.rank)}
           </p>
         </div>
         <div className="min-w-0">
-          <p className="text-xs font-bold uppercase tracking-[.3em] text-copper-light">
+          <p className="text-xs font-bold uppercase tracking-[.3em] text-blue-glow">
             Top Producer
           </p>
-          <h2 className="mt-5 truncate font-display text-[4.25rem] font-light leading-none text-paper sm:text-[5.5rem]">
+          <h2 className="mt-5 truncate font-display text-[4.25rem] font-light leading-none text-blue-pale sm:text-[5.5rem]">
             {entry.agent}
           </h2>
-          <p className="mt-5 text-xs font-bold uppercase tracking-[.28em] text-paper/76">
+          <p className="mt-5 text-xs font-bold uppercase tracking-[.28em] text-blue-pale/72">
             {formatSubmitted(entry.submitted)}
           </p>
           <div className="mt-9">
-            <p className="text-xs font-bold uppercase tracking-[.24em] text-paper/76">
+            <p className="text-xs font-bold uppercase tracking-[.24em] text-blue-pale/72">
               Total Production
             </p>
-            <p className="mt-3 font-display text-6xl font-light leading-none text-copper-light tabular-nums">
+            <p className="mt-3 font-display text-6xl font-light leading-none text-blue-glow tabular-nums">
               {formatCurrency(entry.annualPremium)}
             </p>
           </div>
         </div>
       </div>
-      <div className="relative mt-10 border-t border-paper/12 pt-7 sm:mt-16">
-        <p className="font-display text-4xl text-copper-light">&ldquo;</p>
-        <p className="max-w-xl font-display text-2xl leading-snug text-paper sm:text-3xl">
+      <div className="relative mt-10 border-t border-blue-line pt-7 sm:mt-16">
+        <p className="font-display text-4xl text-blue-glow">&ldquo;</p>
+        <p className="max-w-xl font-display text-2xl leading-snug text-blue-pale sm:text-3xl">
           Great producers do not chase success. They build it one client, one
           deal at a time.
         </p>
-        <p className="mt-8 text-[11px] font-bold uppercase tracking-[.26em] text-paper/66">
+        <p className="mt-8 text-[11px] font-bold uppercase tracking-[.26em] text-blue-pale/62">
           JG Financial
         </p>
       </div>
@@ -234,8 +235,8 @@ function TopProducerFeature({ entry }: { entry: LeaderboardEntry }) {
 function LeaderboardList({ entries }: { entries: Array<LeaderboardEntry> }) {
   if (!entries.length) {
     return (
-      <div className="grid min-h-[18rem] place-items-center border border-copper/22 bg-parchment p-8 text-center">
-        <p className="max-w-sm font-display text-3xl leading-tight text-ink">
+      <div className="grid min-h-[18rem] place-items-center border border-blue-line bg-navy-2/20 p-8 text-center">
+        <p className="max-w-sm font-display text-3xl leading-tight text-blue-pale">
           More ranked producers will appear as submissions come in.
         </p>
       </div>
@@ -243,8 +244,8 @@ function LeaderboardList({ entries }: { entries: Array<LeaderboardEntry> }) {
   }
 
   return (
-    <div className="border border-copper/22 bg-paper shadow-[0_24px_70px_rgba(111,67,38,0.08)]">
-      <div className="divide-y divide-copper/18">
+    <div className="border border-blue-line bg-navy-2/15 shadow-[0_24px_80px_rgba(1,8,28,0.18)]">
+      <div className="divide-y divide-blue-line">
         {entries.map((entry) => (
           <LeaderboardRow entry={entry} key={`${entry.rank}-${entry.agent}`} />
         ))}
@@ -255,8 +256,8 @@ function LeaderboardList({ entries }: { entries: Array<LeaderboardEntry> }) {
 
 function EmptyLeaderboard() {
   return (
-    <div className="mt-8 border border-copper/22 bg-parchment p-10 text-center">
-      <p className="font-display text-4xl text-ink">
+    <div className="mt-8 border border-blue-line bg-navy-2/20 p-10 text-center">
+      <p className="font-display text-4xl text-blue-pale">
         No leaderboard rows for this week.
       </p>
     </div>
@@ -265,11 +266,11 @@ function EmptyLeaderboard() {
 
 function LeaderboardError({ message }: { message: string }) {
   return (
-    <div className="mt-8 border border-copper/22 bg-parchment p-8 text-ink shadow-[0_24px_70px_rgba(111,67,38,0.08)]">
-      <p className="text-xs font-bold uppercase tracking-[.28em] text-copper-strong">
+    <div className="mt-8 border border-blue-line bg-navy-2/20 p-8 text-blue-pale shadow-[0_24px_80px_rgba(1,8,28,0.18)]">
+      <p className="text-xs font-bold uppercase tracking-[.28em] text-blue-glow">
         Leaderboard unavailable
       </p>
-      <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-ink/76">
+      <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-blue-pale/76">
         {message}
       </p>
     </div>
@@ -278,18 +279,18 @@ function LeaderboardError({ message }: { message: string }) {
 
 function LeaderboardRow({ entry }: { entry: LeaderboardEntry }) {
   return (
-    <article className="grid min-h-[5rem] grid-cols-[3.25rem_3rem_minmax(0,1fr)] items-center gap-x-3 px-4 py-3 text-ink sm:grid-cols-[4.5rem_3.25rem_minmax(0,1fr)_minmax(7rem,max-content)] sm:gap-x-5 sm:px-7 sm:py-4">
+    <article className="grid min-h-[5rem] grid-cols-[3.25rem_3rem_minmax(0,1fr)] items-center gap-x-3 px-4 py-3 text-blue-pale sm:grid-cols-[4.5rem_3.25rem_minmax(0,1fr)_minmax(7rem,max-content)] sm:gap-x-5 sm:px-7 sm:py-4">
       <RankBadge rank={entry.rank} />
       <ProducerAvatar agent={entry.agent} rank={entry.rank} />
       <div className="min-w-0">
-        <h3 className="truncate font-display text-2xl font-semibold leading-tight text-ink sm:text-[1.65rem]">
+        <h3 className="truncate font-display text-2xl font-semibold leading-tight text-blue-pale sm:text-[1.65rem]">
           {entry.agent}
         </h3>
-        <p className="mt-1 text-[10px] font-bold uppercase leading-none tracking-[.2em] text-ink/62">
+        <p className="mt-1 text-[10px] font-bold uppercase leading-none tracking-[.2em] text-blue-pale/58">
           {formatSubmitted(entry.submitted)}
         </p>
       </div>
-      <p className="col-start-3 justify-self-start border-t border-copper/50 pt-2 font-display text-2xl font-light leading-none text-ink tabular-nums sm:col-auto sm:justify-self-end sm:border-t-0 sm:border-l sm:pl-8 sm:text-right sm:text-3xl">
+      <p className="col-start-3 justify-self-start border-t border-blue-line pt-2 font-display text-2xl font-light leading-none text-blue-pale/84 tabular-nums sm:col-auto sm:justify-self-end sm:border-t-0 sm:border-l sm:pl-8 sm:text-right sm:text-3xl">
         {formatCurrency(entry.annualPremium)}
       </p>
     </article>
@@ -298,7 +299,7 @@ function LeaderboardRow({ entry }: { entry: LeaderboardEntry }) {
 
 function RankBadge({ rank }: { rank: number }) {
   return (
-    <p className="justify-self-center font-display text-3xl font-semibold leading-none text-ink tabular-nums sm:text-4xl">
+    <p className="justify-self-center font-display text-3xl font-semibold leading-none text-blue-pale tabular-nums sm:text-4xl">
       {formatRank(rank)}
     </p>
   )
@@ -310,7 +311,7 @@ function ProducerAvatar({ agent, rank }: { agent: string; rank: number }) {
   return (
     <div
       aria-hidden="true"
-      className={`grid size-11 place-items-center rounded-full border text-lg font-bold shadow-[0_10px_24px_rgba(25,38,57,0.12)] sm:size-12 ${style}`}
+      className={`grid size-11 place-items-center rounded-full border text-lg font-bold shadow-[inset_0_-12px_20px_rgba(0,0,0,0.2),0_10px_24px_rgba(1,8,28,0.18)] sm:size-12 ${style}`}
     >
       {getInitial(agent)}
     </div>
