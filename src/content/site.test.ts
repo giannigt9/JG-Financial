@@ -80,19 +80,26 @@ describe('site content contracts', () => {
     ).toBe(true)
   })
 
-  test('keeps state buying options under contracting and dialer', () => {
+  test('keeps contracting and dialer portal steps in the right tabs', () => {
     const contracting = portalTabs.find((tab) => tab.id === 'contracting')
     const dialer = portalTabs.find((tab) => tab.id === 'dialer')
-    const contractingBuyingOption: PortalSection | undefined =
+    const directUplineStep: PortalSection | undefined =
       contracting?.sections.find(
-        (section) => section.title === 'Dialer Buying Option',
+        (section) => section.title === 'Send Agent Details',
       )
     const dialerBuyingOption: PortalSection | undefined = dialer?.sections.find(
       (section) => section.title === 'Dialer Buying Option',
     )
 
-    expect(contractingBuyingOption).toEqual(dialerBuyingOption)
-    expect(contractingBuyingOption?.stateCodes).toEqual([
+    expect(
+      contracting?.sections.some(
+        (section) => section.title === 'Dialer Buying Option',
+      ),
+    ).toBe(false)
+    expect(directUplineStep?.body).toBe(
+      'Send your name, NPN, phone number, and email to your direct upline after completing your contracting steps.',
+    )
+    expect(dialerBuyingOption?.stateCodes).toEqual([
       'NV',
       'UT',
       'ID',
@@ -110,7 +117,7 @@ describe('site content contracts', () => {
       'MD',
       'SC',
     ])
-    expect(contractingBuyingOption?.licenseCosts).toEqual([
+    expect(dialerBuyingOption?.licenseCosts).toEqual([
       { state: 'Michigan', cost: '$10' },
       { state: 'Kansas', cost: '$40' },
       { state: 'Indiana', cost: '$80' },

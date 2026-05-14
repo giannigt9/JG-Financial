@@ -55,6 +55,12 @@ const stateBuyingSection: PortalSection = {
   ],
 }
 
+const directUplineDetailsSection: PortalSection = {
+  title: 'Send Agent Details',
+  badge: 'Direct Upline',
+  body: 'Send your name, NPN, phone number, and email to your direct upline after completing your contracting steps.',
+}
+
 export const portalTabs = [
   {
     id: 'contracting',
@@ -98,7 +104,7 @@ export const portalTabs = [
         badge: 'Manual Contracting',
         body: 'Baltimore Life, United Home Life, and Polish Falcons of America. Contact your direct upline to get appointed.',
       },
-      stateBuyingSection,
+      directUplineDetailsSection,
       {
         title: 'AgentSpace',
         badge: 'Active Agents',
