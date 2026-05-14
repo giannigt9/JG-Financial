@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { Icon } from '#/components/Icon'
 import { loginPortal } from '#/server/portal'
 import type { PortalAccessState } from '#/server/portal'
-import type { PortalLicenseCost, PortalTab } from '#/content/portal'
+import type {
+  PortalLicenseCost,
+  PortalMilestone,
+  PortalTab,
+} from '#/content/portal'
 
 export function PortalClient({ initial }: { initial: PortalAccessState }) {
   const [state, setState] = useState(initial)
@@ -145,6 +149,9 @@ function PortalSection({ tab }: { tab: PortalTab }) {
             {section.licenseCosts?.length ? (
               <LicenseCostList costs={section.licenseCosts} />
             ) : null}
+            {section.milestones?.length ? (
+              <MilestoneList milestones={section.milestones} />
+            ) : null}
             {section.actions?.length ? (
               <div className="mt-6 flex flex-wrap gap-3">
                 {section.actions.map((action) => (
@@ -165,6 +172,31 @@ function PortalSection({ tab }: { tab: PortalTab }) {
         ))}
       </div>
     </section>
+  )
+}
+
+function MilestoneList({ milestones }: { milestones: Array<PortalMilestone> }) {
+  return (
+    <ol className="mt-6 grid gap-3">
+      {milestones.map((milestone, index) => (
+        <li
+          className="grid grid-cols-[2.75rem_1fr] gap-4 border border-blue-line bg-navy/40 p-4"
+          key={milestone.label}
+        >
+          <span className="grid size-11 place-items-center border border-blue-line bg-blue-bright/10 font-display text-2xl leading-none text-blue-glow tabular-nums">
+            {index + 1}
+          </span>
+          <span>
+            <span className="block text-xs font-bold uppercase tracking-[.18em] text-blue-glow">
+              {milestone.label}
+            </span>
+            <span className="mt-2 block text-sm leading-6 text-white/68">
+              {milestone.detail}
+            </span>
+          </span>
+        </li>
+      ))}
+    </ol>
   )
 }
 

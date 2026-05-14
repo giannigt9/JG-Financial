@@ -112,6 +112,9 @@ describe('site content contracts', () => {
       contracting?.sections.find(
         (section) => section.title === 'Send Agent Details',
       )
+    const leadStructure: PortalSection | undefined = dialer?.sections.find(
+      (section) => section.title === 'New Agent Lead Structure',
+    )
     const dialerBuyingOption: PortalSection | undefined = dialer?.sections.find(
       (section) => section.title === 'Dialer Buying Option',
     )
@@ -124,6 +127,25 @@ describe('site content contracts', () => {
     expect(directUplineStep?.body).toBe(
       'Send your name, NPN, phone number, and email to your direct upline after completing your contracting steps.',
     )
+    expect(leadStructure?.badge).toBe('Up to 1 Month Free')
+    expect(leadStructure?.milestones).toEqual([
+      {
+        label: '7-Day Trial',
+        detail: 'Start with 7 days of free unlimited leads.',
+      },
+      {
+        label: 'Week 1',
+        detail: 'Close 1 deal to unlock 7 additional free days.',
+      },
+      {
+        label: 'Week 2',
+        detail: 'Close 2 deals to unlock 7 additional free days.',
+      },
+      {
+        label: 'Week 3',
+        detail: 'Close 3 deals to unlock the final 7 free days.',
+      },
+    ])
     expect(dialerBuyingOption?.stateCodes).toEqual([
       'NV',
       'UT',

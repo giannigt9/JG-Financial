@@ -9,11 +9,17 @@ export type PortalLicenseCost = {
   state: string
 }
 
+export type PortalMilestone = {
+  detail: string
+  label: string
+}
+
 export type PortalSection = {
   actions?: Array<PortalAction>
   badge: string
   body: string
   licenseCosts?: Array<PortalLicenseCost>
+  milestones?: Array<PortalMilestone>
   stateCodes?: Array<string>
   title: string
 }
@@ -60,6 +66,30 @@ const directUplineDetailsSection: PortalSection = {
   title: 'Send Agent Details',
   badge: 'Direct Upline',
   body: 'Send your name, NPN, phone number, and email to your direct upline after completing your contracting steps.',
+}
+
+const newAgentLeadStructureSection: PortalSection = {
+  title: 'New Agent Lead Structure',
+  badge: 'Up to 1 Month Free',
+  body: 'All new agents start with 7 days of unlimited free leads and can unlock additional free lead access by closing each weekly target.',
+  milestones: [
+    {
+      label: '7-Day Trial',
+      detail: 'Start with 7 days of free unlimited leads.',
+    },
+    {
+      label: 'Week 1',
+      detail: 'Close 1 deal to unlock 7 additional free days.',
+    },
+    {
+      label: 'Week 2',
+      detail: 'Close 2 deals to unlock 7 additional free days.',
+    },
+    {
+      label: 'Week 3',
+      detail: 'Close 3 deals to unlock the final 7 free days.',
+    },
+  ],
 }
 
 export const portalTabs = [
@@ -134,6 +164,7 @@ export const portalTabs = [
     id: 'dialer',
     label: 'Dialer',
     sections: [
+      newAgentLeadStructureSection,
       {
         title: 'Unlimited Missed Inbound FEX Dialer',
         badge: '$250/week',
