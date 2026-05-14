@@ -1,6 +1,12 @@
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
 
+const agentPortalPassword = process.env.AGENT_PORTAL_PASSWORD
+
+if (!agentPortalPassword) {
+  throw new Error('AGENT_PORTAL_PASSWORD is required')
+}
+
 async function clickHeaderLink(page: Page, name: string) {
   const menuButton = page.getByRole('button', { name: 'Toggle menu' })
 
@@ -54,7 +60,7 @@ test('agent portal gates restricted data server-side', async ({ page }) => {
   await page.getByRole('button', { name: 'Unlock' }).click()
   await expect(page.getByText('Incorrect password')).toBeVisible()
 
-  await page.getByLabel('Agent portal password').fill('JGAgent2026')
+  await page.getByLabel('Agent portal password').fill(agentPortalPassword)
   await page.getByRole('button', { name: 'Unlock' }).click()
   await expect(page.getByText('Portal Unlocked')).toBeVisible()
   await expect(page.getByText('Contract via SuranceBay').first()).toBeVisible()

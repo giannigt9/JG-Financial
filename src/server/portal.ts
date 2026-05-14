@@ -6,6 +6,7 @@ import {
   setResponseHeader,
 } from '@tanstack/react-start/server'
 import { portalTabs } from '#/content/portal'
+import { getRequiredEnv } from './env'
 import type { PortalTab } from '#/content/portal'
 
 const COOKIE_NAME = '__Host-jg_portal'
@@ -107,21 +108,9 @@ function safeEqual(a = '', b = '') {
 }
 
 function getPortalPassword() {
-  const password = process.env.AGENT_PORTAL_PASSWORD
-
-  if (!password && process.env.NODE_ENV === 'production') {
-    throw new Error('AGENT_PORTAL_PASSWORD is required')
-  }
-
-  return password || 'JGAgent2026'
+  return getRequiredEnv('AGENT_PORTAL_PASSWORD')
 }
 
 function getSessionSecret() {
-  const secret = process.env.SESSION_SECRET
-
-  if (!secret && process.env.NODE_ENV === 'production') {
-    throw new Error('SESSION_SECRET is required')
-  }
-
-  return secret || 'local-development-session-secret'
+  return getRequiredEnv('SESSION_SECRET')
 }
