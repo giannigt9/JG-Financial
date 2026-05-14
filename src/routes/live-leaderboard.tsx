@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { LiveLeaderboardClient } from '#/components/LiveLeaderboardClient'
-import { PageBanner } from '#/components/PageBanner'
 import { getLiveLeaderboard } from '#/server/leaderboard'
 
 export const Route = createFileRoute('/live-leaderboard')({
@@ -11,10 +10,5 @@ export const Route = createFileRoute('/live-leaderboard')({
 function LiveLeaderboard() {
   const initial = Route.useLoaderData()
 
-  return (
-    <>
-      <PageBanner eyebrow="Live Leaderboard" title="Weekly Leaderboard" />
-      <LiveLeaderboardClient initial={initial} />
-    </>
-  )
+  return <LiveLeaderboardClient initial={initial} />
 }
