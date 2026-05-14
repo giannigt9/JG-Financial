@@ -7,16 +7,6 @@ type LeaderboardEntry = LeaderboardState['entries'][number]
 
 const TOP_ENTRY_LIMIT = 10
 
-const AVATAR_STYLES = [
-  'border-blue-line bg-[linear-gradient(145deg,#f28a34,#b84d2e)] text-blue-pale',
-  'border-blue-line bg-[linear-gradient(145deg,#9d8a79,#584a42)] text-blue-pale',
-  'border-blue-line bg-[linear-gradient(145deg,#3a8c2f,#1a541c)] text-blue-pale',
-  'border-blue-line bg-[linear-gradient(145deg,#55b9aa,#217469)] text-blue-pale',
-  'border-blue-line bg-[linear-gradient(145deg,#4f8df4,#2055bd)] text-blue-pale',
-  'border-blue-line bg-[linear-gradient(145deg,#64c9bf,#2c8f86)] text-blue-pale',
-  'border-blue-line bg-[linear-gradient(145deg,#b47458,#6e3f31)] text-blue-pale',
-] as const
-
 export function LiveLeaderboardClient({
   initial,
 }: {
@@ -63,9 +53,6 @@ function LeaderboardPanel({ state }: { state: LeaderboardState }) {
       ) : (
         <LeaderboardError message={state.error} />
       )}
-      <p className="mt-8 text-right text-[11px] font-bold uppercase leading-none tracking-[.28em] text-blue-pale/58">
-        Last updated: {formatUpdatedAt(state.updatedAt)}
-      </p>
     </div>
   )
 }
@@ -279,9 +266,8 @@ function LeaderboardError({ message }: { message: string }) {
 
 function LeaderboardRow({ entry }: { entry: LeaderboardEntry }) {
   return (
-    <article className="grid min-h-[5rem] grid-cols-[3.25rem_3rem_minmax(0,1fr)] items-center gap-x-3 px-4 py-3 text-blue-pale sm:grid-cols-[4.5rem_3.25rem_minmax(0,1fr)_minmax(7rem,max-content)] sm:gap-x-5 sm:px-7 sm:py-4">
+    <article className="grid min-h-[5rem] grid-cols-[3.25rem_minmax(0,1fr)] items-center gap-x-3 px-4 py-3 text-blue-pale sm:grid-cols-[4.5rem_minmax(0,1fr)_minmax(7rem,max-content)] sm:gap-x-5 sm:px-7 sm:py-4">
       <RankBadge rank={entry.rank} />
-      <ProducerAvatar agent={entry.agent} rank={entry.rank} />
       <div className="min-w-0">
         <h3 className="truncate font-display text-2xl font-semibold leading-tight text-blue-pale sm:text-[1.65rem]">
           {entry.agent}
@@ -290,7 +276,7 @@ function LeaderboardRow({ entry }: { entry: LeaderboardEntry }) {
           {formatSubmitted(entry.submitted)}
         </p>
       </div>
-      <p className="col-start-3 justify-self-start border-t border-blue-line pt-2 font-display text-2xl font-light leading-none text-blue-pale/84 tabular-nums sm:col-auto sm:justify-self-end sm:border-t-0 sm:border-l sm:pl-8 sm:text-right sm:text-3xl">
+      <p className="col-start-2 justify-self-start border-t border-blue-line pt-2 font-display text-2xl font-light leading-none text-blue-pale/84 tabular-nums sm:col-auto sm:justify-self-end sm:border-t-0 sm:border-l sm:pl-8 sm:text-right sm:text-3xl">
         {formatCurrency(entry.annualPremium)}
       </p>
     </article>
@@ -303,29 +289,6 @@ function RankBadge({ rank }: { rank: number }) {
       {formatRank(rank)}
     </p>
   )
-}
-
-function ProducerAvatar({ agent, rank }: { agent: string; rank: number }) {
-  const style = getAvatarStyle(rank)
-
-  return (
-    <div
-      aria-hidden="true"
-      className={`grid size-11 place-items-center rounded-full border text-lg font-bold shadow-[inset_0_-12px_20px_rgba(0,0,0,0.2),0_10px_24px_rgba(1,8,28,0.18)] sm:size-12 ${style}`}
-    >
-      {getInitial(agent)}
-    </div>
-  )
-}
-
-function getAvatarStyle(rank: number) {
-  const index = Math.max(0, Math.trunc(rank) - 1) % AVATAR_STYLES.length
-
-  return AVATAR_STYLES[index]
-}
-
-function getInitial(value: string) {
-  return value.trim().charAt(0).toUpperCase() || '?'
 }
 
 function formatRank(value: number) {
@@ -342,16 +305,4 @@ function formatCurrency(value: number) {
     maximumFractionDigits: 0,
     style: 'currency',
   }).format(value)
-}
-
-function formatUpdatedAt(value: string) {
-  return new Intl.DateTimeFormat('en-US', {
-    day: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    month: 'short',
-    timeZone: 'UTC',
-    timeZoneName: 'short',
-    year: 'numeric',
-  }).format(new Date(value))
 }
