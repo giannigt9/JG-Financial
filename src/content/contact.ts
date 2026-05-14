@@ -1,10 +1,12 @@
 import type { ContactDetails } from './types'
 
+const discordInviteUrl = 'https://discord.com/invite/NSa82vXZD9'
+
 export const contact = {
   email: 'julianmginsurance@gmail.com',
   owner: 'Julian Gaviria',
-  discord: 'https://discord.gg/7GRXUFA6',
-  licenseDiscord: 'https://discord.com/invite/XBWDVnRF',
+  discord: discordInviteUrl,
+  licenseDiscord: discordInviteUrl,
   stateGuide:
     'https://docs.google.com/spreadsheets/d/1B5IWIe8ONxYilYXYd0tisaRBtiK3QvYDTS6YuwxoKXM/edit?gid=1632858584',
   xcel: 'https://www.xcelsolutions.com',
