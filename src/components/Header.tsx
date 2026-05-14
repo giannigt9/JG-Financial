@@ -1,6 +1,8 @@
 import { Link, useRouterState } from '@tanstack/react-router'
+import { clsx } from 'clsx'
 import { useState } from 'react'
 import { Icon } from '#/components/Icon'
+import { appRoutes } from '#/config/routes'
 import { contact } from '#/content/contact'
 import { navItems } from '#/content/navigation'
 
@@ -9,13 +11,27 @@ export function Header() {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   })
+  const isPaperHeader = pathname === appRoutes.liveLeaderboard
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-blue-line bg-navy/90 backdrop-blur-xl">
+    <header
+      className={clsx(
+        'site-header fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl',
+        isPaperHeader
+          ? 'border-copper/25 bg-paper/95 shadow-[0_1px_0_rgba(111,67,38,0.08)]'
+          : 'border-blue-line bg-navy/90',
+      )}
+      data-theme={isPaperHeader ? 'paper' : 'navy'}
+    >
       <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between px-5 md:px-8">
         <Link
           aria-label="JG Financial home"
-          className="bg-white px-3 py-1"
+          className={clsx(
+            'px-3 py-1',
+            isPaperHeader
+              ? 'border border-copper/20 bg-parchment shadow-[0_8px_24px_rgba(111,67,38,0.08)]'
+              : 'bg-white',
+          )}
           to="/"
         >
           <img
@@ -38,7 +54,7 @@ export function Header() {
             </Link>
           ))}
           <a
-            className="nav-link border border-blue-bright text-blue-glow"
+            className="community-link nav-link border border-blue-bright text-blue-glow"
             href={contact.discord}
             rel="noopener noreferrer"
             target="_blank"
@@ -50,7 +66,12 @@ export function Header() {
           aria-expanded={open}
           aria-controls="primary-navigation"
           aria-label="Toggle menu"
-          className="grid size-11 place-items-center border border-blue-line text-white lg:hidden"
+          className={clsx(
+            'grid size-11 place-items-center border lg:hidden',
+            isPaperHeader
+              ? 'border-copper/35 text-ink'
+              : 'border-blue-line text-white',
+          )}
           onClick={() => setOpen((value) => !value)}
           type="button"
         >
@@ -58,11 +79,23 @@ export function Header() {
         </button>
       </div>
       {open ? (
-        <div className="border-t border-blue-line bg-navy px-5 py-5 lg:hidden">
+        <div
+          className={clsx(
+            'border-t px-5 py-5 lg:hidden',
+            isPaperHeader
+              ? 'border-copper/20 bg-paper'
+              : 'border-blue-line bg-navy',
+          )}
+        >
           <nav className="flex flex-col" id="primary-navigation">
             {navItems.map((item) => (
               <Link
-                className="border-b border-blue-line py-4 text-sm font-bold uppercase tracking-[.18em] text-white"
+                className={clsx(
+                  'border-b py-4 text-sm font-bold uppercase tracking-[.18em]',
+                  isPaperHeader
+                    ? 'border-copper/18 text-ink'
+                    : 'border-blue-line text-white',
+                )}
                 key={item.to}
                 onClick={() => setOpen(false)}
                 to={item.to}
@@ -71,7 +104,10 @@ export function Header() {
               </Link>
             ))}
             <a
-              className="py-4 text-sm font-bold uppercase tracking-[.18em] text-blue-glow"
+              className={clsx(
+                'py-4 text-sm font-bold uppercase tracking-[.18em]',
+                isPaperHeader ? 'text-copper-strong' : 'text-blue-glow',
+              )}
               href={contact.discord}
               rel="noopener noreferrer"
               target="_blank"
