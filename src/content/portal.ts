@@ -3,10 +3,17 @@ export type PortalAction = {
   label: string
 }
 
+export type PortalLicenseCost = {
+  cost: string
+  state: string
+}
+
 export type PortalSection = {
   actions?: Array<PortalAction>
   badge: string
   body: string
+  licenseCosts?: Array<PortalLicenseCost>
+  stateCodes?: Array<string>
   title: string
 }
 
@@ -107,6 +114,37 @@ export const portalTabs = [
             label: 'Sign Up',
             href: 'https://whop.com/checkout/plan_x4JbepLdGntTK/',
           },
+        ],
+      },
+      {
+        title: 'Dialer Buying Option',
+        badge: 'States to Buy',
+        body: 'Pick up these states when buying dialer inventory.',
+        stateCodes: [
+          'NV',
+          'UT',
+          'ID',
+          'NE',
+          'LA',
+          'OK',
+          'IN',
+          'FL',
+          'TX',
+          'KY',
+          'MI',
+          'MO',
+          'KS',
+          'AZ',
+          'MD',
+          'SC',
+        ],
+        licenseCosts: [
+          { state: 'Michigan', cost: '$10' },
+          { state: 'Kansas', cost: '$40' },
+          { state: 'Indiana', cost: '$80' },
+          { state: 'Louisiana', cost: '$75' },
+          { state: 'Idaho', cost: '$80' },
+          { state: 'Utah', cost: '$80' },
         ],
       },
     ],

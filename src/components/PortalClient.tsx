@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Icon } from '#/components/Icon'
 import { loginPortal } from '#/server/portal'
 import type { PortalAccessState } from '#/server/portal'
-import type { PortalTab } from '#/content/portal'
+import type { PortalLicenseCost, PortalTab } from '#/content/portal'
 
 export function PortalClient({ initial }: { initial: PortalAccessState }) {
   const [state, setState] = useState(initial)
@@ -139,6 +139,12 @@ function PortalSection({ tab }: { tab: PortalTab }) {
               </span>
             </div>
             <p className="text-sm leading-7 text-white/60">{section.body}</p>
+            {section.stateCodes?.length ? (
+              <StateCodeList codes={section.stateCodes} />
+            ) : null}
+            {section.licenseCosts?.length ? (
+              <LicenseCostList costs={section.licenseCosts} />
+            ) : null}
             {section.actions?.length ? (
               <div className="mt-6 flex flex-wrap gap-3">
                 {section.actions.map((action) => (
@@ -158,5 +164,50 @@ function PortalSection({ tab }: { tab: PortalTab }) {
         ))}
       </div>
     </section>
+  )
+}
+
+function StateCodeList({ codes }: { codes: Array<string> }) {
+  return (
+    <div className="mt-6">
+      <p className="text-[11px] font-bold uppercase tracking-[.22em] text-blue-glow">
+        States to buy
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {codes.map((code) => (
+          <span
+            className="border border-blue-line bg-blue-bright/10 px-3 py-2 text-xs font-bold uppercase tracking-[.16em] text-white"
+            key={code}
+          >
+            {code}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function LicenseCostList({ costs }: { costs: Array<PortalLicenseCost> }) {
+  return (
+    <div className="mt-6">
+      <p className="text-[11px] font-bold uppercase tracking-[.22em] text-blue-glow">
+        Licenses under $100
+      </p>
+      <div className="mt-3 grid gap-2 sm:grid-cols-2">
+        {costs.map((license) => (
+          <div
+            className="flex items-center justify-between gap-4 border border-blue-line bg-navy/40 px-4 py-3"
+            key={license.state}
+          >
+            <span className="text-sm font-semibold text-white/74">
+              {license.state}
+            </span>
+            <span className="font-display text-2xl leading-none text-blue-glow tabular-nums">
+              {license.cost}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }

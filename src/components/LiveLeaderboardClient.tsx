@@ -31,7 +31,8 @@ function LeaderboardPanel({ state }: { state: LeaderboardState }) {
     0,
   )
   const entries = state.entries.slice(0, TOP_ENTRY_LIMIT)
-  const [topEntry, ...remainingEntries] = entries
+  const topEntry = entries[0]
+  const remainingEntries = entries.slice(1)
 
   return (
     <div>
@@ -42,7 +43,7 @@ function LeaderboardPanel({ state }: { state: LeaderboardState }) {
         totalSubmitted={totalSubmitted}
       />
       {state.status === 'success' ? (
-        topEntry ? (
+        entries.length ? (
           <div className="mt-8 grid gap-4 xl:grid-cols-[1.05fr_.95fr] xl:items-stretch">
             <TopProducerFeature entry={topEntry} />
             <LeaderboardList entries={remainingEntries} />

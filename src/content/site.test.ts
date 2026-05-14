@@ -3,20 +3,22 @@ import { appRoutes } from '#/config/routes'
 import { benefits } from './careers'
 import { navItems } from './navigation'
 import { faqs } from './faq'
-import { compensationFormula, features, stats } from './home'
+import { compensationFormula, features, stats, welcomeVideo } from './home'
+import { industryVideo } from './industry'
 import { licenseSteps } from './licensing'
 import { portalTabs } from './portal'
+import type { PortalSection } from './portal'
 
 describe('site content contracts', () => {
   test('keeps primary routes in the navigation', () => {
     expect(navItems.map((item) => item.to)).toEqual([
       '/',
+      '/live-leaderboard',
       '/get-licensed',
       '/industry',
       '/team',
       '/faq',
       '/careers',
-      '/live-leaderboard',
       '/portal',
     ])
   })
@@ -58,6 +60,11 @@ describe('site content contracts', () => {
     expect(compensationFormula.result).toBe('$422 per sale')
   })
 
+  test('keeps video placeholders content-driven', () => {
+    expect(welcomeVideo.status).toBe('Editing in progress')
+    expect(industryVideo.status).toBe('Loom embed ready')
+  })
+
   test('keeps restricted portal content behind structured tabs', () => {
     expect(portalTabs.length).toBeGreaterThan(0)
     expect(portalTabs.every((tab) => tab.sections.length > 0)).toBe(true)
@@ -71,5 +78,39 @@ describe('site content contracts', () => {
         ),
       ),
     ).toBe(true)
+  })
+
+  test('keeps dialer buying options structured', () => {
+    const dialer = portalTabs.find((tab) => tab.id === 'dialer')
+    const buyingOption: PortalSection | undefined = dialer?.sections.find(
+      (section) => section.title === 'Dialer Buying Option',
+    )
+
+    expect(buyingOption?.stateCodes).toEqual([
+      'NV',
+      'UT',
+      'ID',
+      'NE',
+      'LA',
+      'OK',
+      'IN',
+      'FL',
+      'TX',
+      'KY',
+      'MI',
+      'MO',
+      'KS',
+      'AZ',
+      'MD',
+      'SC',
+    ])
+    expect(buyingOption?.licenseCosts).toEqual([
+      { state: 'Michigan', cost: '$10' },
+      { state: 'Kansas', cost: '$40' },
+      { state: 'Indiana', cost: '$80' },
+      { state: 'Louisiana', cost: '$75' },
+      { state: 'Idaho', cost: '$80' },
+      { state: 'Utah', cost: '$80' },
+    ])
   })
 })

@@ -6,7 +6,16 @@ import type {
   PillarItem,
   ScheduleDay,
   StatItem,
+  VideoFeatureContent,
 } from './types'
+
+export const welcomeVideo = {
+  eyebrow: 'Welcome Video',
+  title: 'Welcome to JG Financial',
+  description:
+    'Julian filmed the welcome message and the final edit will be added here as soon as it is ready.',
+  status: 'Editing in progress',
+} satisfies VideoFeatureContent
 
 export const stats = [
   { value: '45%', label: 'of Americans have no life insurance at all' },

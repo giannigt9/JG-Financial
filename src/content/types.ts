@@ -19,6 +19,13 @@ export type StatItem = {
   value: string
 }
 
+export type VideoFeatureContent = {
+  description: string
+  eyebrow: string
+  status: string
+  title: string
+}
+
 export type FeatureIcon =
   | 'dialer'
   | 'analytics'

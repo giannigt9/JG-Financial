@@ -6,6 +6,7 @@ import { LeaderboardPreview } from '#/components/sections/LeaderboardPreview'
 import { MathSection } from '#/components/sections/MathSection'
 import { ScheduleGrid } from '#/components/sections/ScheduleGrid'
 import { StatGrid } from '#/components/sections/StatGrid'
+import { VideoFeature } from '#/components/sections/VideoFeature'
 import { WhySection } from '#/components/sections/WhySection'
 import { appRoutes } from '#/config/routes'
 import { contact } from '#/content/contact'
@@ -15,6 +16,7 @@ import {
   mathRows,
   schedule,
   stats,
+  welcomeVideo,
   whyPillars,
 } from '#/content/home'
 
@@ -24,6 +26,11 @@ function Home() {
   return (
     <>
       <HomeHero />
+      <section className="section-pad bg-navy">
+        <div className="content-shell max-w-5xl">
+          <VideoFeature video={welcomeVideo} />
+        </div>
+      </section>
       <section className="section-pad bg-navy-2">
         <div className="content-shell text-center">
           <h2 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight text-white">

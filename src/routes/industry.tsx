@@ -5,7 +5,7 @@ import { StatGrid } from '#/components/sections/StatGrid'
 import { VideoFeature } from '#/components/sections/VideoFeature'
 import { appRoutes } from '#/config/routes'
 import { contact } from '#/content/contact'
-import { industryMetrics } from '#/content/industry'
+import { industryMetrics, industryVideo } from '#/content/industry'
 
 export const Route = createFileRoute('/industry')({ component: Industry })
 
@@ -25,7 +25,7 @@ function Industry() {
       />
       <section className="section-pad bg-navy-2">
         <div className="content-shell max-w-5xl">
-          <VideoFeature />
+          <VideoFeature video={industryVideo} />
           <div className="mt-12">
             <StatGrid columns="md:grid-cols-3" items={industryMetrics} />
           </div>
