@@ -110,7 +110,7 @@ export const portalTabs = [
         actions: [
           {
             label: 'Contract via SuranceBay',
-            href: 'https://app.suranceinc.com/registration/getStarted?company=46f2f9f7-cea7-4894-bc0a-d5e93f8c89d0',
+            href: 'https://accounts.surancebay.com/oauth/authorize?redirect_uri=https:%2F%2Fsurelc.surancebay.com%2Fproducer%2Foauth%3FreturnUrl%3D%2Fprofile%2Fcontact-info%3FgaId%3D868%26gaId%3D868%26branch%3DEnhance%2520Companies%26branchVisible%3Dtrue%26branchEditable%3Dfalse%26branchRequired%3Dtrue%26autoAdd%3Dfalse%26requestMethod%3DGET&gaId=868&client_id=surecrmweb&response_type=code',
           },
         ],
       },
@@ -121,7 +121,7 @@ export const portalTabs = [
         actions: [
           {
             label: 'Contract via SuranceBay',
-            href: 'https://app.suranceinc.com/registration/getStarted?company=83c70ef1-79c9-49a6-b89c-cffe14b0b76e',
+            href: 'https://surelc.surancebay.com/sbweb/login.jsp?branch=JG%20Financial&branchEditable=off&branchRequired=on&branchVisible=on&gaId=1279&gaName=Supreme%20Life%20Brokerage',
           },
         ],
       },
@@ -132,7 +132,7 @@ export const portalTabs = [
         actions: [
           {
             label: 'Reparent from Another IMO',
-            href: 'https://docs.google.com/forms/d/e/1FAIpQLSeBh1nVJpcwDrxBRr0g8ehYZi9DkBLk0PJiMTk_lYYHb6mFKQ/viewform',
+            href: 'https://docs.google.com/forms/d/e/1FAIpQLSeZBE5V-jr0EEwVAZYPMA0SxmNaWMalkYbdKF5GLN3KBy0ssw/viewform',
           },
         ],
       },
