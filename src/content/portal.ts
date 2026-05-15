@@ -164,7 +164,6 @@ export const portalTabs = [
     id: 'dialer',
     label: 'Dialer',
     sections: [
-      newAgentLeadStructureSection,
       {
         title: 'Unlimited Missed Inbound FEX Dialer',
         badge: '$250/week',
@@ -187,6 +186,7 @@ export const portalTabs = [
           },
         ],
       },
+      newAgentLeadStructureSection,
       stateBuyingSection,
     ],
   },

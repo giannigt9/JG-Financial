@@ -127,6 +127,12 @@ describe('site content contracts', () => {
     expect(directUplineStep?.body).toBe(
       'Send your name, NPN, phone number, and email to your direct upline after completing your contracting steps.',
     )
+    expect(dialer?.sections.map((section) => section.title)).toEqual([
+      'Unlimited Missed Inbound FEX Dialer',
+      'Unlimited Survey + FEX Dialer',
+      'New Agent Lead Structure',
+      'Dialer Buying Option',
+    ])
     expect(leadStructure?.badge).toBe('Up to 1 Month Free')
     expect(leadStructure?.milestones).toEqual([
       {
