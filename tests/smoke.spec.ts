@@ -66,6 +66,12 @@ test('agent portal gates restricted data server-side', async ({ page }) => {
   await page.getByRole('button', { name: 'Unlock' }).click()
   await expect(page.getByText('Portal Unlocked')).toBeVisible()
   await expect(page.getByText('Contract via SuranceBay').first()).toBeVisible()
+  const buyStatesLink = page.getByRole('link', { name: 'Buy States on NIPR' })
+  await expect(buyStatesLink).toBeVisible()
+  await expect(buyStatesLink).toHaveAttribute(
+    'href',
+    'https://nipr.com/licensing-center',
+  )
 
   const session = (await page.context().cookies()).find(
     (cookie) => cookie.name === '__Host-jg_portal',

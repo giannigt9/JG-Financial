@@ -170,6 +170,12 @@ describe('site content contracts', () => {
       'MD',
       'SC',
     ])
+    expect(dialerBuyingOption?.actions).toEqual([
+      {
+        label: 'Buy States on NIPR',
+        href: 'https://nipr.com/licensing-center',
+      },
+    ])
     expect(dialerBuyingOption?.licenseCosts).toEqual([
       { state: 'Michigan', cost: '$10' },
       { state: 'Kansas', cost: '$40' },

@@ -34,6 +34,12 @@ const stateBuyingSection: PortalSection = {
   title: 'Dialer Buying Option',
   badge: 'States to Buy',
   body: 'Pick up these states when buying dialer inventory.',
+  actions: [
+    {
+      label: 'Buy States on NIPR',
+      href: 'https://nipr.com/licensing-center',
+    },
+  ],
   stateCodes: [
     'NV',
     'UT',
