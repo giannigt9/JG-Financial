@@ -2,6 +2,7 @@ import { existsSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
 import { appRoutes } from '#/config/routes'
 import { benefits } from './careers'
+import { contact } from './contact'
 import { navItems } from './navigation'
 import { faqs } from './faq'
 import { compensationFormula, features, stats, welcomeVideo } from './home'
@@ -112,6 +113,10 @@ describe('site content contracts', () => {
       contracting?.sections.find(
         (section) => section.title === 'Send Agent Details',
       )
+    const contractingResources: PortalSection | undefined =
+      contracting?.sections.find(
+        (section) => section.title === 'Contracting Resources',
+      )
     const leadStructure: PortalSection | undefined = dialer?.sections.find(
       (section) => section.title === 'New Agent Lead Structure',
     )
@@ -127,6 +132,12 @@ describe('site content contracts', () => {
     expect(directUplineStep?.body).toBe(
       'Send your name, NPN, phone number, and email to your direct upline after completing your contracting steps.',
     )
+    expect(contractingResources?.actions).toEqual([
+      {
+        label: 'Open State Guide',
+        href: contact.stateGuide,
+      },
+    ])
     expect(dialer?.sections.map((section) => section.title)).toEqual([
       'Unlimited Missed Inbound FEX Dialer',
       'Unlimited Survey + FEX Dialer',

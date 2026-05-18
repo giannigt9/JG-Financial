@@ -1,3 +1,5 @@
+import { contact } from './contact'
+
 export type PortalAction = {
   download?: string
   href: string
@@ -74,6 +76,18 @@ const directUplineDetailsSection: PortalSection = {
   body: 'Send your name, NPN, phone number, and email to your direct upline after completing your contracting steps.',
 }
 
+const contractingResourcesSection: PortalSection = {
+  title: 'Contracting Resources',
+  badge: 'State Guide',
+  body: 'Open the state-by-state guide when you need exam, fingerprint, and application requirements during contracting.',
+  actions: [
+    {
+      label: 'Open State Guide',
+      href: contact.stateGuide,
+    },
+  ],
+}
+
 const newAgentLeadStructureSection: PortalSection = {
   title: 'New Agent Lead Structure',
   badge: 'Up to 1 Month Free',
@@ -141,6 +155,7 @@ export const portalTabs = [
         badge: 'Manual Contracting',
         body: 'Baltimore Life, United Home Life, and Polish Falcons of America. Contact your direct upline to get appointed.',
       },
+      contractingResourcesSection,
       directUplineDetailsSection,
       {
         title: 'AgentSpace',
