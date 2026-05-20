@@ -25,12 +25,12 @@ export const Route = createFileRoute('/')({ component: Home })
 function Home() {
   return (
     <>
-      <section className="section-pad bg-navy pt-36">
+      <HomeHero />
+      <section className="section-pad bg-navy">
         <div className="content-shell max-w-5xl">
           <VideoFeature video={welcomeVideo} />
         </div>
       </section>
-      <HomeHero />
       <section className="section-pad bg-navy-2">
         <div className="content-shell text-center">
           <h2 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-tight text-white">
