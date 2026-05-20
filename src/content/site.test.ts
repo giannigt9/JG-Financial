@@ -62,8 +62,15 @@ describe('site content contracts', () => {
     expect(compensationFormula.result).toBe('$422 per sale')
   })
 
-  test('keeps video placeholders content-driven', () => {
-    expect(welcomeVideo.status).toBe('Editing in progress')
+  test('keeps video content source-driven', () => {
+    expect(welcomeVideo).toMatchObject({
+      embedUrl:
+        'https://drive.google.com/file/d/11rBXDgWFs9McHMSKc7VHl9-uFSkw9iry/preview',
+      kind: 'embed',
+      thumbnailUrl:
+        'https://drive.google.com/thumbnail?id=11rBXDgWFs9McHMSKc7VHl9-uFSkw9iry&sz=w1600',
+    })
+    expect(industryVideo.kind).toBe('placeholder')
     expect(industryVideo.status).toBe('Loom embed ready')
   })
 

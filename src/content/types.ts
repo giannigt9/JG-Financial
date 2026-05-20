@@ -19,12 +19,22 @@ export type StatItem = {
   value: string
 }
 
-export type VideoFeatureContent = {
+type VideoFeatureBase = {
   description: string
   eyebrow: string
-  status: string
   title: string
 }
+
+export type VideoFeatureContent =
+  | (VideoFeatureBase & {
+      embedUrl: string
+      kind: 'embed'
+      thumbnailUrl: string
+    })
+  | (VideoFeatureBase & {
+      kind: 'placeholder'
+      status: string
+    })
 
 export type FeatureIcon =
   | 'dialer'

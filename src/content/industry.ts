@@ -2,6 +2,7 @@ import type { StatItem, VideoFeatureContent } from './types'
 
 export const industryVideo = {
   eyebrow: 'Industry Breakdown',
+  kind: 'placeholder',
   title: 'Industry Breakdown',
   description:
     'A focused walkthrough of the life insurance industry, the JG Financial model, and the opportunity available to agents.',
