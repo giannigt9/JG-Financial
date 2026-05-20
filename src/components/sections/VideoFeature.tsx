@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Icon } from '#/components/Icon'
 import type { VideoFeatureContent } from '#/content/types'
 
@@ -26,29 +25,15 @@ function EmbedVideo({
 }: {
   video: Extract<VideoFeatureContent, { kind: 'embed' }>
 }) {
-  const [frameReady, setFrameReady] = useState(false)
-
   return (
-    <div className="relative isolate h-full w-full">
-      <img
-        alt=""
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
-        loading="eager"
-        src={video.thumbnailUrl}
-      />
-      <div className="absolute inset-0 -z-10 bg-navy/25" />
-      <iframe
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowFullScreen
-        className={`h-full w-full transition-opacity duration-300 ${
-          frameReady ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
-        loading="eager"
-        onLoad={() => setFrameReady(true)}
-        src={video.embedUrl}
-        title={video.title}
-      />
-    </div>
+    <iframe
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowFullScreen
+      className="h-full w-full"
+      loading="eager"
+      src={video.embedUrl}
+      title={video.title}
+    />
   )
 }
 
