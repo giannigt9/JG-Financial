@@ -254,10 +254,6 @@ export const portalTabs = [
             label: 'Inbound Script',
             href: 'https://docs.google.com/document/d/1lLPEX9ja0GNfEQg3cNvLSsojKClIxu1cYACONT9k-Wo/edit?tab=t.0',
           },
-          {
-            label: 'Survey 3.0 Script',
-            href: 'https://docs.google.com/document/d/10ZbZp8844XQD0311Jef-6c8DGGd4845pdbER_parTD0/edit?tab=t.0',
-          },
         ],
       },
       {

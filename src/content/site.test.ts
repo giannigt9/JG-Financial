@@ -113,6 +113,16 @@ describe('site content contracts', () => {
     ).toBe(true)
   })
 
+  test('keeps retired survey 3.0 resource out of the portal', () => {
+    const actionLabels = portalTabs.flatMap((tab) =>
+      tab.sections.flatMap(
+        (section) => section.actions?.map((action) => action.label) ?? [],
+      ),
+    )
+
+    expect(actionLabels).not.toContain('Survey 3.0 Script')
+  })
+
   test('keeps contracting and dialer portal steps in the right tabs', () => {
     const contracting = portalTabs.find((tab) => tab.id === 'contracting')
     const dialer = portalTabs.find((tab) => tab.id === 'dialer')
