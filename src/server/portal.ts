@@ -45,7 +45,7 @@ export const loginPortal = createServerFn({ method: 'POST' })
 
     if (!safeEqual(data.password, getPortalPassword())) {
       return unauthenticated(
-        'Incorrect password. Try again or contact your manager.',
+        'Incorrect password. Try again or contact your partner.',
       )
     }
 

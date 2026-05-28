@@ -1,22 +1,66 @@
-import type { ManagerProfile } from './types'
+import type { TeamProfile } from './types'
+import { contact } from './contact'
 
-export const managers = [
+export const teamProfiles = [
   {
-    initials: 'JG',
-    name: 'Julian Gaviria',
-    title: 'Founder · CEO',
+    id: 'julian-gaviria',
+    name: contact.owner,
+    title: contact.ownerTitle,
+    photo: {
+      src: '/assets/partners/julian-gaviria.jpg',
+      position: '50% 42%',
+    },
     bio: 'Founded JG Financial to give agents a real shot at this industry through mentorship, contracts, and a culture of genuine impact.',
+    highlights: [
+      'Born and raised in Miami, Florida',
+      'Attended University of Florida',
+      '2+ years of sales and training experience',
+      '700K+ personal IP',
+      '10M+ agency IP',
+    ],
   },
   {
-    initials: 'M2',
-    name: 'Manager Name',
-    title: 'Senior Manager',
-    bio: 'Bio coming soon. This profile is ready for a real manager photo, production story, and coaching specialty.',
+    id: 'zaccari-antonucci',
+    name: 'Zaccari Antonucci',
+    title: 'Partner',
+    photo: {
+      src: '/assets/partners/zaccari-antonucci.jpg',
+      position: '44% 50%',
+    },
+    bio: 'Partner at JG Financial.',
+    highlights: [],
   },
   {
-    initials: 'M3',
-    name: 'Manager Name',
-    title: 'Manager',
-    bio: 'Bio coming soon. This profile is ready for a real manager photo, production story, and coaching specialty.',
+    id: 'keenan-lawrence',
+    name: 'Keenan Lawrence',
+    title: 'Partner',
+    photo: {
+      src: '/assets/partners/keenan-lawrence.jpg',
+      position: '50% 34%',
+    },
+    bio: 'Partner at JG Financial.',
+    highlights: [],
   },
-] satisfies Array<ManagerProfile>
+  {
+    id: 'alejandro-maya',
+    name: 'Alejandro Maya',
+    title: 'Partner',
+    photo: {
+      src: '/assets/partners/alejandro-maya.jpg',
+      position: '50% 14%',
+    },
+    bio: 'Partner at JG Financial.',
+    highlights: [],
+  },
+  {
+    id: 'amir-gibson',
+    name: 'Amir Gibson',
+    title: 'Partner',
+    photo: {
+      src: '/assets/partners/amir-gibson.jpg',
+      position: '50% 35%',
+    },
+    bio: 'Partner at JG Financial.',
+    highlights: [],
+  },
+] satisfies Array<TeamProfile>

@@ -53,7 +53,7 @@ function Home() {
       <LeaderboardPreview />
       <ContactBand
         title="Ready to start your career with JG Financial?"
-        detail="Julian Gaviria — Agency Owner"
+        detail={`${contact.owner}, ${contact.ownerTitle}`}
         primary={{
           label: 'Email Julian',
           href: `mailto:${contact.email}`,

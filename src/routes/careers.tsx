@@ -29,7 +29,7 @@ function Careers() {
         </div>
       </section>
       <ContactBand
-        detail={`${contact.owner} — Agency Owner`}
+        detail={`${contact.owner}, ${contact.ownerTitle}`}
         primary={{ label: 'Email Julian', href: `mailto:${contact.email}` }}
         secondary={{ label: 'Get Licensed', to: appRoutes.getLicensed }}
         title="Ready to build your future?"

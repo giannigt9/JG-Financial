@@ -107,10 +107,15 @@ export type BenefitItem = {
   title: string
 }
 
-export type ManagerProfile = {
+export type TeamProfile = {
   bio: string
-  initials: string
+  highlights: Array<string>
+  id: string
   name: string
+  photo: {
+    position?: string
+    src: string
+  }
   title: string
 }
 
@@ -131,6 +136,7 @@ export type ContactDetails = {
   licenseDiscord: string
   nipr: string
   owner: string
+  ownerTitle: string
   stateGuide: string
   xcel: string
 }

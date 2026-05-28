@@ -25,7 +25,7 @@ export function PortalClient({ initial }: { initial: PortalAccessState }) {
     } catch {
       setState({
         authenticated: false,
-        error: 'Portal access failed. Try again or contact your manager.',
+        error: 'Portal access failed. Try again or contact your partner.',
         tabs: [],
       })
     } finally {
@@ -73,7 +73,7 @@ function PortalLogin({
           </h2>
           <p className="mt-4 text-sm leading-7 text-white/58">
             If you are a JG Financial agent and do not know the password,
-            message your manager.
+            message your partner.
           </p>
           <form className="mt-8 flex gap-3" onSubmit={onSubmit}>
             <label className="sr-only" htmlFor="portal-password">

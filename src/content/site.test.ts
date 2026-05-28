@@ -9,6 +9,7 @@ import { compensationFormula, features, stats, welcomeVideo } from './home'
 import { industryVideo } from './industry'
 import { licenseSteps } from './licensing'
 import { portalTabs } from './portal'
+import { teamProfiles } from './team'
 import type { PortalSection } from './portal'
 
 describe('site content contracts', () => {
@@ -60,6 +61,37 @@ describe('site content contracts', () => {
   test('keeps compensation formula structured', () => {
     expect(compensationFormula.factors).toHaveLength(4)
     expect(compensationFormula.result).toBe('$422 per sale')
+  })
+
+  test('keeps team roles and Julian highlights explicit', () => {
+    expect(teamProfiles.map((profile) => profile.name)).toEqual([
+      contact.owner,
+      'Zaccari Antonucci',
+      'Keenan Lawrence',
+      'Alejandro Maya',
+      'Amir Gibson',
+    ])
+    expect(teamProfiles[0]).toMatchObject({
+      name: contact.owner,
+      title: contact.ownerTitle,
+      highlights: [
+        'Born and raised in Miami, Florida',
+        'Attended University of Florida',
+        '2+ years of sales and training experience',
+        '700K+ personal IP',
+        '10M+ agency IP',
+      ],
+    })
+    expect(
+      teamProfiles.slice(1).every((profile) => profile.title === 'Partner'),
+    ).toBe(true)
+    expect(
+      teamProfiles.every((profile) =>
+        existsSync(
+          new URL(`../../public${profile.photo.src}`, import.meta.url),
+        ),
+      ),
+    ).toBe(true)
   })
 
   test('keeps video content source-driven', () => {
