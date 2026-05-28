@@ -88,6 +88,9 @@ const contractingResourcesSection: PortalSection = {
   ],
 }
 
+const supremeSuranceBayUrl =
+  'https://surelc.surancebay.com/producer/?gaId=1279&branch=JG%20Financial&branchVisible=true&branchEditable=false&branchRequired=true&autoAdd=false&requestMethod=GET'
+
 const newAgentLeadStructureSection: PortalSection = {
   title: 'New Agent Lead Structure',
   badge: 'Up to 1 Month Free',
@@ -135,7 +138,7 @@ export const portalTabs = [
         actions: [
           {
             label: 'Contract via SuranceBay',
-            href: 'https://surelc.surancebay.com/sbweb/login.jsp?branch=JG%20Financial&branchEditable=off&branchRequired=on&branchVisible=on&gaId=1279&gaName=Supreme%20Life%20Brokerage',
+            href: supremeSuranceBayUrl,
           },
         ],
       },

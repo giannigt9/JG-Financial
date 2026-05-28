@@ -166,6 +166,10 @@ describe('site content contracts', () => {
       contracting?.sections.find(
         (section) => section.title === 'Contracting Resources',
       )
+    const supremeCarriers: PortalSection | undefined =
+      contracting?.sections.find(
+        (section) => section.title === 'JG Financial Carriers - Supreme',
+      )
     const leadStructure: PortalSection | undefined = dialer?.sections.find(
       (section) => section.title === 'New Agent Lead Structure',
     )
@@ -185,6 +189,12 @@ describe('site content contracts', () => {
       {
         label: 'Open State Guide',
         href: contact.stateGuide,
+      },
+    ])
+    expect(supremeCarriers?.actions).toEqual([
+      {
+        label: 'Contract via SuranceBay',
+        href: 'https://surelc.surancebay.com/producer/?gaId=1279&branch=JG%20Financial&branchVisible=true&branchEditable=false&branchRequired=true&autoAdd=false&requestMethod=GET',
       },
     ])
     expect(dialer?.sections.map((section) => section.title)).toEqual([
