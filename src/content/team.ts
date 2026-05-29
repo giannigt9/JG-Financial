@@ -27,8 +27,14 @@ export const teamProfiles = [
       src: '/assets/partners/zaccari-antonucci.jpg',
       position: '44% 50%',
     },
-    bio: 'Partner at JG Financial.',
-    highlights: [],
+    bio: 'Partner at JG Financial, dedicated to helping agents build successful careers and create lasting impact through the insurance industry. A husband, leader, and entrepreneur passionate about personal growth, faith, and developing others.',
+    highlights: [
+      '2+ years of insurance sales and leadership experience',
+      '$50K+ monthly producer',
+      'Currently leading a 7-figure insurance agency',
+      'Trained and mentored agents across the country',
+      'Passionate about faith, family, and helping others win',
+    ],
   },
   {
     id: 'keenan-lawrence',

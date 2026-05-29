@@ -82,6 +82,17 @@ describe('site content contracts', () => {
         '10M+ agency IP',
       ],
     })
+    expect(teamProfiles[1]).toMatchObject({
+      name: 'Zaccari Antonucci',
+      title: 'Partner',
+      highlights: [
+        '2+ years of insurance sales and leadership experience',
+        '$50K+ monthly producer',
+        'Currently leading a 7-figure insurance agency',
+        'Trained and mentored agents across the country',
+        'Passionate about faith, family, and helping others win',
+      ],
+    })
     expect(
       teamProfiles.slice(1).every((profile) => profile.title === 'Partner'),
     ).toBe(true)
