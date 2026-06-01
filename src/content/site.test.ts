@@ -99,9 +99,9 @@ describe('site content contracts', () => {
       highlights: [
         '2+ years in the insurance industry',
         '500K+ yearly personal IP',
-        'Leading 400K/month agency',
+        'Leading 400K+/month agency',
         'Advanced markets professional',
-        'Owns office in Raton, Florida',
+        'Owns office in Boca Raton, Florida',
       ],
     })
     expect(
