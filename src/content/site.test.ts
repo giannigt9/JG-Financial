@@ -93,6 +93,17 @@ describe('site content contracts', () => {
         'Passionate about faith, family, and helping others win',
       ],
     })
+    expect(teamProfiles[2]).toMatchObject({
+      name: 'Keenan Lawrence',
+      title: 'Partner',
+      highlights: [
+        '2+ years in the insurance industry',
+        '500K+ yearly personal IP',
+        'Leading 400K/month agency',
+        'Advanced markets professional',
+        'Owns office in Raton, Florida',
+      ],
+    })
     expect(
       teamProfiles.slice(1).every((profile) => profile.title === 'Partner'),
     ).toBe(true)

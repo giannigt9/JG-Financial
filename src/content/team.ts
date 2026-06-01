@@ -44,8 +44,14 @@ export const teamProfiles = [
       src: '/assets/partners/keenan-lawrence.jpg',
       position: '50% 34%',
     },
-    bio: 'Partner at JG Financial.',
-    highlights: [],
+    bio: 'Founder of Factored Financial under JG Financial as a Partner dedicated to helping agents thrive by providing the tools, mentorship, and opportunities needed for long-term success in an industry that has the potential to transform lives and build lasting financial independence.',
+    highlights: [
+      '2+ years in the insurance industry',
+      '500K+ yearly personal IP',
+      'Leading 400K/month agency',
+      'Advanced markets professional',
+      'Owns office in Raton, Florida',
+    ],
   },
   {
     id: 'alejandro-maya',
