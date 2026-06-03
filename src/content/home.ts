@@ -11,14 +11,13 @@ import type {
 
 export const welcomeVideo = {
   eyebrow: 'Welcome Video',
-  kind: 'embed',
+  kind: 'video',
   title: 'Welcome to JG Financial',
   description:
     'A welcome message from Julian introducing JG Financial and the opportunity for new agents.',
-  embedUrl:
-    'https://drive.google.com/file/d/11rBXDgWFs9McHMSKc7VHl9-uFSkw9iry/preview',
-  thumbnailUrl:
-    'https://drive.google.com/thumbnail?id=11rBXDgWFs9McHMSKc7VHl9-uFSkw9iry&sz=w1600',
+  posterUrl: '/assets/videos/welcome-vsl-poster.jpg',
+  src: '/assets/videos/welcome-vsl.mp4',
+  type: 'video/mp4',
 } satisfies VideoFeatureContent
 
 export const stats = [

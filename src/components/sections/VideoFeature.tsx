@@ -3,37 +3,51 @@ import type { VideoFeatureContent } from '#/content/types'
 
 export function VideoFeature({ video }: { video: VideoFeatureContent }) {
   return (
-    <div className="border border-blue-line bg-gradient-to-br from-navy-2 to-navy p-4 shadow-2xl shadow-black/40">
-      <div className="aspect-video overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,.22),transparent_68%),linear-gradient(135deg,#0a1f4d,#122c63)]">
-        {video.kind === 'embed' ? (
-          <EmbedVideo video={video} />
-        ) : (
-          <div className="grid h-full place-items-center p-8 text-center">
-            <VideoPoster status={video.status} video={video} />
-          </div>
-        )}
+    <div className="video-feature">
+      <div
+        className="video-feature-card border border-blue-line bg-gradient-to-br from-navy-2 to-navy p-4 shadow-2xl shadow-black/40"
+        data-vsl-card="true"
+      >
+        <div
+          className={
+            video.kind === 'video'
+              ? 'video-feature-frame aspect-video bg-black'
+              : 'video-feature-frame aspect-video bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,.22),transparent_68%),linear-gradient(135deg,#0a1f4d,#122c63)]'
+          }
+          data-vsl-frame="true"
+        >
+          {video.kind === 'video' ? (
+            <NativeVideo video={video} />
+          ) : (
+            <div className="grid h-full place-items-center p-8 text-center">
+              <VideoPoster status={video.status} video={video} />
+            </div>
+          )}
+        </div>
+        <p className="video-feature-description border-t border-blue-line px-2 pt-4 text-sm leading-7 text-white/58">
+          {video.description}
+        </p>
       </div>
-      <p className="border-t border-blue-line px-2 pt-4 text-sm leading-7 text-white/58">
-        {video.description}
-      </p>
     </div>
   )
 }
 
-function EmbedVideo({
+function NativeVideo({
   video,
 }: {
-  video: Extract<VideoFeatureContent, { kind: 'embed' }>
+  video: Extract<VideoFeatureContent, { kind: 'video' }>
 }) {
   return (
-    <iframe
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowFullScreen
-      className="h-full w-full"
-      loading="eager"
-      src={video.embedUrl}
-      title={video.title}
-    />
+    <video
+      aria-label={video.title}
+      className="video-feature-video"
+      controls
+      playsInline
+      poster={video.posterUrl}
+      preload="metadata"
+    >
+      <source src={video.src} type={video.type} />
+    </video>
   )
 }
 

@@ -118,12 +118,24 @@ describe('site content contracts', () => {
 
   test('keeps video content source-driven', () => {
     expect(welcomeVideo).toMatchObject({
-      embedUrl:
-        'https://drive.google.com/file/d/11rBXDgWFs9McHMSKc7VHl9-uFSkw9iry/preview',
-      kind: 'embed',
-      thumbnailUrl:
-        'https://drive.google.com/thumbnail?id=11rBXDgWFs9McHMSKc7VHl9-uFSkw9iry&sz=w1600',
+      kind: 'video',
+      posterUrl: '/assets/videos/welcome-vsl-poster.jpg',
+      src: '/assets/videos/welcome-vsl.mp4',
+      type: 'video/mp4',
     })
+    expect(
+      existsSync(
+        new URL('../../public/assets/videos/welcome-vsl.mp4', import.meta.url),
+      ),
+    ).toBe(true)
+    expect(
+      existsSync(
+        new URL(
+          '../../public/assets/videos/welcome-vsl-poster.jpg',
+          import.meta.url,
+        ),
+      ),
+    ).toBe(true)
     expect(industryVideo.kind).toBe('placeholder')
     expect(industryVideo.status).toBe('Loom embed ready')
   })

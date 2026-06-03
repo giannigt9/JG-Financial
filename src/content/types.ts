@@ -27,9 +27,10 @@ type VideoFeatureBase = {
 
 export type VideoFeatureContent =
   | (VideoFeatureBase & {
-      embedUrl: string
-      kind: 'embed'
-      thumbnailUrl: string
+      kind: 'video'
+      posterUrl: string
+      src: string
+      type: 'video/mp4'
     })
   | (VideoFeatureBase & {
       kind: 'placeholder'
