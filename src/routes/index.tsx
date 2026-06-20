@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { ButtonLink } from '#/components/ButtonLink'
 import { ContactBand } from '#/components/ContactBand'
 import { FeatureShowcase } from '#/components/sections/FeatureShowcase'
 import { HomeHero } from '#/components/sections/HomeHero'
@@ -26,9 +27,14 @@ function Home() {
   return (
     <>
       <HomeHero />
-      <section className="section-pad bg-navy">
+      <section className="bg-navy px-6 pb-24 pt-6 md:px-14 md:pb-28 md:pt-10">
         <div className="content-shell max-w-5xl">
           <VideoFeature video={welcomeVideo} />
+          <div className="mt-6 flex justify-center md:mt-8">
+            <ButtonLink href={contact.instagram} size="lg">
+              Apply Now
+            </ButtonLink>
+          </div>
         </div>
       </section>
       <section className="section-pad bg-navy-2">
