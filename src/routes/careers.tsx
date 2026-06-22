@@ -25,7 +25,7 @@ function Careers() {
       <section className="section-pad bg-navy-2">
         <div className="content-shell">
           <BenefitGrid items={benefits} />
-          <PositionCta email={contact.email} />
+          <PositionCta instagram={contact.instagram} />
         </div>
       </section>
       <ContactBand
