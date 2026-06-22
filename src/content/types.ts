@@ -134,6 +134,7 @@ export type ContactDetails = {
   agentSpace: string
   discord: string
   email: string
+  instagram: string
   licenseDiscord: string
   nipr: string
   owner: string

@@ -4,6 +4,7 @@ const discordInviteUrl = 'https://discord.com/invite/NSa82vXZD9'
 
 export const contact = {
   email: 'julianmginsurance@gmail.com',
+  instagram: 'https://www.instagram.com/jmgaviria_/',
   owner: 'Julian Gaviria',
   ownerTitle: 'CEO',
   discord: discordInviteUrl,

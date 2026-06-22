@@ -4,10 +4,12 @@ import { Icon } from '#/components/Icon'
 import type { AppRoute } from '#/config/routes'
 
 type ButtonVariant = 'primary' | 'outline' | 'text'
+type ButtonSize = 'default' | 'lg'
 
 type SharedButtonLinkProps = {
   children: React.ReactNode
   className?: string
+  size?: ButtonSize
   variant?: ButtonVariant
 }
 
@@ -31,10 +33,16 @@ const styles: Record<ButtonVariant, string> = {
   text: 'border-transparent bg-transparent px-0 text-blue-bright hover:text-blue-glow',
 }
 
+const sizes: Record<ButtonSize, string> = {
+  default: 'min-h-12 px-8 py-3 text-xs',
+  lg: 'min-h-14 px-12 py-4 text-sm',
+}
+
 export function ButtonLink(props: ButtonLinkProps) {
-  const { children, className, variant = 'primary' } = props
+  const { children, className, size = 'default', variant = 'primary' } = props
   const classes = clsx(
-    'inline-flex min-h-12 items-center justify-center gap-2 border px-8 py-3 text-xs font-bold uppercase tracking-[.22em] transition',
+    'inline-flex items-center justify-center gap-2 border font-bold uppercase tracking-[.22em] transition',
+    sizes[size],
     styles[variant],
     className,
   )
