@@ -346,6 +346,27 @@ img {
   transform: translateX(4px);
 }
 
+@keyframes btn-pulse {
+  0% {
+    outline-color: rgba(59, 130, 246, 0.8);
+    outline-offset: 0px;
+  }
+  60%,
+  100% {
+    outline-color: rgba(59, 130, 246, 0);
+    outline-offset: 14px;
+  }
+}
+
+.btn-pulse-wrap {
+  display: inline-flex;
+}
+
+.btn-pulse {
+  outline: 2px solid rgba(59, 130, 246, 0.8);
+  animation: btn-pulse 1.8s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

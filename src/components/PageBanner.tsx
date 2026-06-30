@@ -1,14 +1,16 @@
 export function PageBanner({
+  action,
   eyebrow,
   intro,
   title,
 }: {
+  action?: React.ReactNode
   eyebrow: string
   intro?: string
   title: React.ReactNode
 }) {
   return (
-    <section className="hero-shell flex min-h-[520px] items-center justify-center overflow-hidden px-6 pt-28 text-center">
+    <section className="hero-shell flex min-h-[520px] items-center justify-center overflow-hidden px-6 pt-28 pb-16 text-center">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(59,130,246,.18),transparent_64%),linear-gradient(135deg,#061536,#0a1f4d)]" />
       <div className="vein-overlay" />
       <div className="relative z-10 mx-auto max-w-5xl">
@@ -22,6 +24,7 @@ export function PageBanner({
             {intro}
           </p>
         ) : null}
+        {action ? <div className="mt-8">{action}</div> : null}
       </div>
     </section>
   )
