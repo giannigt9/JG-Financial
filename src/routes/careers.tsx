@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ButtonLink } from '#/components/ButtonLink'
 import { ContactBand } from '#/components/ContactBand'
 import { PageBanner } from '#/components/PageBanner'
 import { BenefitGrid } from '#/components/sections/BenefitGrid'
@@ -14,6 +13,7 @@ function Careers() {
   return (
     <>
       <PageBanner
+        compact
         eyebrow="Join JG Financial"
         title={
           <>
@@ -22,21 +22,15 @@ function Careers() {
             <em className="gradient-text">That Continues To Grow</em>
           </>
         }
-        action={
-          <div className="flex flex-col items-center gap-4 pb-8">
-            <ButtonLink href={contact.instagram} size="lg" className="btn-pulse">
-              Apply Now
-            </ButtonLink>
-            <p className="text-xs font-bold uppercase tracking-[.18em] text-blue-glow">
-              DM your name to @jmgaviria_ on Instagram
-            </p>
-          </div>
-        }
       />
-      <section className="section-pad bg-navy-2">
+      <section className="bg-navy-2 px-[clamp(1.5rem,5vw,3.75rem)] pt-6 pb-0">
+        <div className="content-shell">
+          <PositionCta instagram={contact.instagram} />
+        </div>
+      </section>
+      <section className="bg-navy-2 px-[clamp(1.5rem,5vw,3.75rem)] pt-6 pb-[clamp(5rem,9vw,10rem)]">
         <div className="content-shell">
           <BenefitGrid items={benefits} />
-          <PositionCta instagram={contact.instagram} />
         </div>
       </section>
       <ContactBand

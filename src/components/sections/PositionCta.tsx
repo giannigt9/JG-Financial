@@ -2,7 +2,7 @@ import { ButtonLink } from '#/components/ButtonLink'
 
 export function PositionCta({ instagram }: { instagram: string }) {
   return (
-    <div className="mt-14 grid items-center gap-8 border border-blue-line bg-gradient-to-br from-navy via-navy-3 to-navy p-8 md:grid-cols-[1fr_auto] md:p-12">
+    <div className="grid items-center gap-8 border border-blue-line bg-gradient-to-br from-navy via-navy-3 to-navy p-8 md:grid-cols-[1fr_auto] md:p-12">
       <div>
         <h2 className="font-display text-4xl text-white">
           <em className="text-blue-glow">Financial Services Agent</em>
@@ -15,7 +15,7 @@ export function PositionCta({ instagram }: { instagram: string }) {
           To apply — DM your name to @jmgaviria_ on Instagram
         </p>
       </div>
-      <ButtonLink href={instagram}>Apply Now</ButtonLink>
+      <ButtonLink href={instagram} className="btn-pulse">Apply Now</ButtonLink>
     </div>
   )
 }
