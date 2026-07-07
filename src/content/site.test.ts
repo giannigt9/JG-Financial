@@ -189,6 +189,18 @@ describe('site content contracts', () => {
     expect(actionLabels).not.toContain('Survey 3.0 Script')
   })
 
+  test('keeps self-serve dialer checkout links out of the portal', () => {
+    const actionHrefs = portalTabs.flatMap((tab) =>
+      tab.sections.flatMap(
+        (section) => section.actions?.map((action) => action.href) ?? [],
+      ),
+    )
+
+    expect(
+      actionHrefs.some((href) => href.startsWith('https://whop.com/checkout/')),
+    ).toBe(false)
+  })
+
   test('keeps contracting and dialer portal steps in the right tabs', () => {
     const contracting = portalTabs.find((tab) => tab.id === 'contracting')
     const dialer = portalTabs.find((tab) => tab.id === 'dialer')

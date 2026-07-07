@@ -192,23 +192,11 @@ export const portalTabs = [
         title: 'Unlimited Missed Inbound FEX Dialer',
         badge: '$250/week',
         body: 'Power dialer access for missed inbound and FEX leads with JG Financial setup.',
-        actions: [
-          {
-            label: 'Sign Up',
-            href: 'https://whop.com/checkout/plan_EKIRLFsretJfx',
-          },
-        ],
       },
       {
         title: 'Unlimited Survey + FEX Dialer',
         badge: '$375/week',
         body: 'Higher-capacity dialer access for producers grinding 5+ hours a day.',
-        actions: [
-          {
-            label: 'Sign Up',
-            href: 'https://whop.com/checkout/plan_x4JbepLdGntTK/',
-          },
-        ],
       },
       newAgentLeadStructureSection,
       stateBuyingSection,
