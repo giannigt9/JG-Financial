@@ -123,7 +123,7 @@ export const portalTabs = [
       {
         title: 'JG Financial Carriers - UIG',
         badge: 'Via SuranceBay',
-        body: 'American Amicable, American Home Life, F&G Life, Mutual of Omaha, and Transamerica.',
+        body: 'American Amicable, American Home Life, F&G Life, and Mutual of Omaha.',
         actions: [
           {
             label: 'Contract via SuranceBay',

@@ -212,6 +212,9 @@ describe('site content contracts', () => {
       contracting?.sections.find(
         (section) => section.title === 'Contracting Resources',
       )
+    const uigCarriers: PortalSection | undefined = contracting?.sections.find(
+      (section) => section.title === 'JG Financial Carriers - UIG',
+    )
     const supremeCarriers: PortalSection | undefined =
       contracting?.sections.find(
         (section) => section.title === 'JG Financial Carriers - Supreme',
@@ -237,6 +240,10 @@ describe('site content contracts', () => {
         href: contact.stateGuide,
       },
     ])
+    expect(uigCarriers?.body).toBe(
+      'American Amicable, American Home Life, F&G Life, and Mutual of Omaha.',
+    )
+    expect(supremeCarriers?.body).toContain('Transamerica')
     expect(supremeCarriers?.actions).toEqual([
       {
         label: 'Contract via SuranceBay',
