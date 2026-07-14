@@ -121,17 +121,6 @@ export const portalTabs = [
     label: 'Contracting',
     sections: [
       {
-        title: 'JG Financial Carriers - UIG',
-        badge: 'Via SuranceBay',
-        body: 'American Amicable, American Home Life, F&G Life, and Mutual of Omaha.',
-        actions: [
-          {
-            label: 'Contract via SuranceBay',
-            href: 'https://accounts.surancebay.com/oauth/authorize?redirect_uri=https:%2F%2Fsurelc.surancebay.com%2Fproducer%2Foauth%3FreturnUrl%3D%2Fprofile%2Fcontact-info%3FgaId%3D868%26gaId%3D868%26branch%3DEnhance%2520Companies%26branchVisible%3Dtrue%26branchEditable%3Dfalse%26branchRequired%3Dtrue%26autoAdd%3Dfalse%26requestMethod%3DGET&gaId=868&client_id=surecrmweb&response_type=code',
-          },
-        ],
-      },
-      {
         title: 'JG Financial Carriers - Supreme',
         badge: 'Via SuranceBay',
         body: 'Instabrain, SBLI, Foresters, Transamerica, and more as appointments expand.',

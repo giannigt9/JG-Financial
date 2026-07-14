@@ -30,7 +30,7 @@ export const faqs = [
   {
     question: 'What carriers do you work with?',
     answer:
-      'Carrier groups include UIG, Supreme, Ethos, and Heartland. Specific carriers and contracting links are available in the agent portal.',
+      'Carrier groups include Supreme, Ethos, and Heartland. Specific carriers and contracting links are available in the agent portal.',
   },
   {
     question: 'How do agents get paid?',
